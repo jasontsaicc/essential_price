@@ -89,11 +89,12 @@ while p >= 1:
         #做表格
         laundry_name = pd.Series(laundry_name)
         laundry_price = pd.Series(laundry_price)
+        when = time.strftime("%Y-%m-%d")
         laundry_list = pd.DataFrame(
             {"商品類別":"洗衣精",
             "商品全名":laundry_name,
             "商品價格":laundry_price,
-            "價格更新時間":time.strftime("%Y-%m-%d"),
+            "價格更新時間":when,
             "商品網址":url_list})
-        laundry_list.to_csv("C:/Users/TibeMe_user/Desktop/project/product/laundry/laundry_list.csv")
+        laundry_list.to_csv(f"C:/Users/TibeMe_user/Desktop/project/product/laundry/laundry_list_{when}.csv")
         break
