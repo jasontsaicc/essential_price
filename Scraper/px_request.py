@@ -47,15 +47,15 @@ class Pxmart:
                     for row in range(1, 5):
                         # category = self.driver.find_element('xpath', f"//*[@id='root']/div/div[2]/div/ol/li[2]/a/h1")
                         name = self.driver.find_element('xpath',
-                                                        f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{e}]/div[1]/div/div[{category_value}]/div/div/ul/li[{j}]/div/div/a/div/div[2]/div[1]")
+                                                        f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{next_page}]/div[1]/div/div[{column}]/div/div/ul/li[{row}]/div/div/a/div/div[2]/div[1]")
                         price = self.driver.find_element('xpath',
-                                                         f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{e}]/div[1]/div/div[{category_value}]/div/div/ul/li[{j}]/div/div/a/div/div[2]/div[2]/div[1]/div[2]")
+                                                         f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{next_page}]/div[1]/div/div[{column}]/div/div/ul/li[{row}]/div/div/a/div/div[2]/div[2]/div[1]/div[2]")
                         # 這裡是用get_attribute 可以爬出屬性值
                         product_url = self.driver.find_element('xpath',
-                                                               f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{e}]/div[1]/div/div[{category_value}]/div/div/ul/li[{j}]/div/div/a").get_attribute(
+                                                               f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{next_page}]/div[1]/div/div[{column}]/div/div/ul/li[{row}]/div/div/a").get_attribute(
                             'href')
                         photos = self.driver.find_element('xpath',
-                                                          f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{e}]/div[1]/div/div[{category_value}]/div/div/ul/li[{j}]/div/div/a/div/div[1]/figure/img").get_attribute(
+                                                          f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{next_page}]/div[1]/div/div[{column}]/div/div/ul/li[{row}]/div/div/a/div/div[1]/figure/img").get_attribute(
                             'src')
 
                         print(category_url, k, datetime.date.today(), "PxMart", name.text, price.text, product_url,
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
     # 所有分類以及url
     #     dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks":[244, 248, 250], "rice_oil_powder":[729, 246, 247, 249], "make_up":[252, 528], "baby":[441], "life_style":[254, 222, 358], "daily_use":[251, 253, 511], "furniture":[518], "clothing":[462, 522, ], "electrical":[497, 502, 506]}
-    dict_px_category = {"frozen_food": [245], "drink_snacks": [244, 248, 250], "rice_oil_powder": [729, 246, 247, 249],
+    dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks": [244, 248, 250], "rice_oil_powder": [729, 246, 247, 249],
                         "make_up": [252, 528], "baby": [441], "life_style": [254, 222, 358],
                         "daily_use": [251, 253, 511], "furniture": [518], "clothing": [462, 522, ],
                         "electrical": [497, 502, 506]}
