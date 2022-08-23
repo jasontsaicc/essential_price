@@ -18,7 +18,7 @@ numexpr
 numpy 
 outcome==1.2.0
 packaging 
-pandas==1.4.3
+pandas
 pyasn1 
 pyasn1-modules==0.2.8
 pycparser 
