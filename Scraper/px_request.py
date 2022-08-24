@@ -61,7 +61,7 @@ class Pxmart:
                         print(category_url, k, datetime.date.today(), "PxMart", name.text, price.text, product_url,
                               photos)
 
-                        data = {"category": k, "date": datetime.datetime.today(), "market": "PxMart",
+                        data = {"category": k, "date": str(datetime.date.today()), "market": "PxMart",
                                 "price": price.text, "product_name": name.text, "product_url": product_url,
                                 "photos": photos}
                         result.append(data)
