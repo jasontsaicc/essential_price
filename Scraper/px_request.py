@@ -58,11 +58,11 @@ class Pxmart:
                                                           f"//*[@id='root']/div/div[2]/div/div/div[2]/div[{next_page}]/div[1]/div/div[{column}]/div/div/ul/li[{row}]/div/div/a/div/div[1]/figure/img").get_attribute(
                             'src')
 
-                        print(category_url, k, datetime.date.today(), "PxMart", name.text, price.text, product_url,
+                        print(category_url, k, datetime.date.today(), "PxMart", name.text, int(price.text.strip("NT$").replace(",", "")), product_url,
                               photos)
 
-                        data = {"category": k, "date": str(datetime.date.today()), "market": "PxMart",
-                                "price": price.text, "product_name": name.text, "product_url": product_url,
+                        data = {"category": k, "date": str(datetime.date.today()), "market": "P",
+                                "price": int(price.text.strip("NT$").replace(",", "")), "product_name": name.text, "product_url": product_url,
                                 "photos": photos}
                         result.append(data)
 
