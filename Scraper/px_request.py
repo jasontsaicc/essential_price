@@ -107,7 +107,7 @@ if __name__ == '__main__':
     #     dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks":[244, 248, 250], "rice_oil_powder":[729, 246, 247, 249], "make_up":[252, 528], "baby":[441], "life_style":[254, 222, 358], "daily_use":[251, 253, 511], "furniture":[518], "clothing":[462, 522, ], "electrical":[497, 502, 506]}
     dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks": [244, 248, 250], "rice_oil_powder": [729, 246, 247, 249],
                         "make_up": [252, 528], "baby": [441], "life_style": [254, 222, 358],
-                        "daily_use": [251, 253, 511], "furniture": [518], "clothing": [462, 522, ],
+                        "daily_use": [251, 253, 511], "furniture": [518], "clothing": [462, 522],
                         "electrical": [497, 502, 506]}
 
     # 用dict的items()方法取出key和value  代入get_content()方法
