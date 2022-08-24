@@ -2,7 +2,7 @@ import pymongo
 from pymongo import MongoClient
 import datetime
 
-client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://admin:<password>@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
 
 db = client.All_Market
 collections = db.productions
