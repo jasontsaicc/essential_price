@@ -92,9 +92,9 @@ class Pxmart:
     def save_mongodb(data):
         # 將爬取的資料存入mongodb
         client = pymongo.MongoClient(
-            host='mongodb+srv://admin:00065638@cluster0.fiqpaqd.mongodb.net/?retryWrites=true&w=majority', port=27017)
-        db = client["test"]
-        collection = db.pxmart_product
+            host='mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority', port=27017)
+        db = client["All_Market"]
+        collection = db.PxMart
         collection.insert_many(data)
 
 
