@@ -3,6 +3,7 @@
 *.csv
 *.xml
 *.iml
+*.name
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
