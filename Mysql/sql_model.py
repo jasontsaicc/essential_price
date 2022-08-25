@@ -1,4 +1,3 @@
-
 import sqlalchemy as sa
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
