@@ -16,7 +16,9 @@ rt_mart = Mart(id='R', mart_name='大潤發')
 carrefour_mart = Mart(id='C', mart_name='家樂福')
 poya_mart = Mart(id='Y', mart_name='寶雅')
 
+# all_marts = [px_marts, rt_mart, carrefour_mart, poya_mart]
 
+# all_marts = [px_marts, rt_mart, carrefour_mart, poya_mart]
 
 # 建立一個session
 session = Session()
