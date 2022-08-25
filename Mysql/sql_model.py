@@ -20,6 +20,8 @@ class Product(BASE):
     # mart_id = sa.Column(sa.String(64))
     # category_id = sa.Column(sa.Integer)
     product_name = sa.Column(sa.String(64))
+    product_url = sa.Column(sa.String(64))
+    product_pic_url = sa.Column(sa.String(64))
 
     fk_price = relationship('Price')
 
