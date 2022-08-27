@@ -5,6 +5,9 @@ import re
 import time
 import os
 when = time.strftime("%Y-%m-%d")
+product_list = pd.DataFrame({})
+ff_list = pd.DataFrame({})
+product_dir = "C:/Users/TibeMe_user/Desktop/project/product/RT-Mart"
 
 #爬非生鮮、非冷凍商品的函數
 def RT_Mart():
@@ -20,22 +23,18 @@ def RT_Mart():
         "electrical":[71505,3749,169740,104458],
         "3C":[3750]
     }
-
-    global product_list
-    product_list = pd.DataFrame({})
+    
+    #創建商品資料夾
+    try:
+        os.mkdir(product_dir)
+    except FileExistsError:
+        pass
     
     for k in product_id.keys():
         product_name = []
         product_price = []
         product_url_list = []
         photos = []
-        
-        try:
-            #創建商品資料夾
-            product_dir = "C:/Users/TibeMe_user/Desktop/project/product/RT-Mart"
-            os.mkdir(product_dir)
-        except FileExistsError:
-            pass
 
         for v in product_id[k]:
             p=1
@@ -109,6 +108,8 @@ def RT_Mart():
                         product_price_fix = product_price_fix.split()[0]
                         product_price.append(int(product_price_fix))
 
+                        print(k,v,p,i,(i+1)+(p-1)*72,remove_useless)
+
                     p+=1
 
                 except:
@@ -124,11 +125,10 @@ def RT_Mart():
             "product_url":product_url_list,
             "photos":photos
         })
-                            
+        
+        global product_list
         product_list = pd.concat([product_list,product_list_category],ignore_index=True)
-    
-    product_list.to_json(product_dir + f"/RT-Mart_{when}.json",force_ascii=0,orient="records")
-    print(k + " is done")
+        product_list.to_json(product_dir + f"/RT-Mart_{when}.json",force_ascii=0,orient="records")
 
 
 
@@ -186,27 +186,23 @@ def RT_Mart_ff():
         frozen_food_id
     ]
 
-    global ff_list
-    ff_list = pd.DataFrame({})
+    #創建資料夾
+    try:
+        os.mkdir(product_dir)
+    except FileExistsError:
+        pass
+
 
     for ff in product_type:
-        #創建資料夾
-        try:
-            global ff_dir
-            ff_dir = "C:/Users/TibeMe_user/Desktop/project/product/RT-Mart"
-            os.mkdir(ff_dir)
-        except FileExistsError:
-            pass
-
         for pi in product_id:
             if product_id.index(pi) != product_type.index(ff):
                 pass
             else:
-                ff_name = []
-                ff_price = []
-                ff_url_list = []
-                ff_photos = []
-                for k in pi.keys():  
+                for k in pi.keys():
+                    ff_name = []
+                    ff_price = []
+                    ff_url_list = []
+                    ff_photos = []
                     for v in pi[k]:
                         p=1
                         while p >= 1:
@@ -282,25 +278,27 @@ def RT_Mart_ff():
                                     ff_price_fix = ff_price_fix.strip("$")
                                     ff_price_fix = ff_price_fix.split()[0]
                                     ff_price.append(int(ff_price_fix))
+
+                                    print(ff,k,v,p,i,(i+1)+(p-1)*72,remove_useless)
                                 
                                 p+=1
 
                             except:
                                 break
 
-        ff_list_category = pd.DataFrame({
-            "category":ff,
-            "date":when,
-            "market":"RT-Mart",
-            "price":ff_price,
-            "product_name":ff_name,
-            "product_url":ff_url_list,
-            "photos":ff_photos
-        })
-        ff_list = pd.concat([ff_list,ff_list_category],ignore_index=True)
+                    ff_list_category = pd.DataFrame({
+                        "category":ff,
+                        "date":when,
+                        "market":"RT-Mart",
+                        "price":ff_price,
+                        "product_name":ff_name,
+                        "product_url":ff_url_list,
+                        "photos":ff_photos
+                    })
 
-    ff_list.to_json(ff_dir + f"/RT-Mart_FF_{when}.json",force_ascii=0,orient="records")
-    print(ff + " is done")
+                    global ff_list
+                    ff_list = pd.concat([ff_list,ff_list_category],ignore_index=True)
+                    ff_list.to_json(product_dir + f"/RT-Mart_FF_{when}.json",force_ascii=0,orient="records")
 
 
 
@@ -309,8 +307,9 @@ def RT_Mart_ff():
 def start_to_crawl():
     RT_Mart_ff()
     RT_Mart()
+    global product_list
     product_list = pd.concat([product_list,ff_list],ignore_index=1)
-    product_list.to_json(ff_dir + f"/RT-Mart_{when}.json",force_ascii=0,orient="records")
-    os.remove(ff_dir + f"/RT-Mart_FF_{when}.json")
+    product_list.to_json(product_dir + f"/RT-Mart_{when}.json",force_ascii=0,orient="records")
+    os.remove(product_dir + f"/RT-Mart_FF_{when}.json")
 
-# start_to_crawl()
+start_to_crawl()
