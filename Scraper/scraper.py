@@ -1,7 +1,7 @@
-import Scraper.px_request as p
-# import Scraper.rtmart as r
-import Scraper.Carrefour_test as c
-import Scraper.scraper_to_mongodb as m
+# import px_request as p
+# # import Scraper.rtmart as r
+import Carrefour_test as c
+import scraper_to_mongodb as m
 import pymongo
 from pymongo import MongoClient
 import datetime
@@ -28,6 +28,6 @@ db = client.All_Market
 # m.rtmart(rt_ff_data)
 
 # carrefour scraper
-ca = c.main()
+ca = c.Main()
 ca_data = ca.get_ALLproduction()
 m.carr(ca_data)
