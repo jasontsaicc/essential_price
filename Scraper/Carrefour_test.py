@@ -46,17 +46,17 @@ class Main:
                 try:
                     for e in (1, 200):  # 跑幾頁
                         self.driver.get(i.format(num))
-                        self.driver.implicitly_wait(1)
+                        # self.driver.implicitly_wait(1)
                         self.soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-                        self.driver.implicitly_wait(1)
+                        # self.driver.implicitly_wait(1)
                         for j in range(0, 24):  # 每一頁有24個商品 [j] 第j個商品
                             names = self.soup.select('div[class="commodity-desc"] a')[j].text
                             name = str(names)
-                            self.driver.implicitly_wait(0.5)
+                            # self.driver.implicitly_wait(0.5)
                             prices = self.soup.select('div[class="current-price"] em')[j].text
-                            self.driver.implicitly_wait(0.5)
+                            # self.driver.implicitly_wait(0.5)
                             price = prices.strip('$')
-                            self.driver.implicitly_wait(0.5)
+                            # self.driver.implicitly_wait(0.5)
                             pic = self.soup.select('div[class="box-img"] a.gtm-product-alink img.m_lazyload')[j].get(
                                 'src')  # 用get 取src裡面的屬性
                             pic_url = 'https://online.carrefour.com.tw' + str(
