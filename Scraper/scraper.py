@@ -1,7 +1,7 @@
-import px_request as p
-import rtmart as r
-import carrefour as c
-import scraper_to_mongodb as m
+import Scraper.px_request as p
+# import Scraper.rtmart as r
+import Scraper.Carrefour_test as c
+import Scraper.scraper_to_mongodb as m
 import pymongo
 from pymongo import MongoClient
 import datetime
