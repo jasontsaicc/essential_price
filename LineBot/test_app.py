@@ -7,29 +7,32 @@ import requests
 import json
 import configparser
 import datetime
+import cv2
+import random
+import string
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import Model, load_model
+import os
 
 app = Flask(__name__)
+
 config = configparser.ConfigParser()
 config.read('config.ini')
-
-line_bot_api = LineBotApi(config.get('line-bot', 'channel_access_token'))
-handler = WebhookHandler(config.get('line-bot', 'channel_secret'))
-my_line_id = config.get('line-bot', 'my_line_id')
+line_bot_api = LineBotApi('XEelw51XG9RsGCgkqym87VtAtB2tLUOO2Ao+svXoXSQxXcwtVaNIBaLfGDHOmusHAMXI94q7CeQgfVfmn+XYSNIS9KUI0i6Kyb9PuX3SzJPjXDJ5u4VG6xO+l/GEmvXupYUDLJ1xF0v5sEVTOaTGpgdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('eca01d5fb9a796d170e8121249efb4ca')
 end_point = config.get('line-bot', 'end_point')
-line_login_id = config.get('line-bot', 'line_login_id')
-line_login_secret = config.get('line-bot', 'line_login_secret')
-my_phone = config.get('line-bot', 'my_phone')
 HEADER = {
     'Content-type': 'application/json',
     'Authorization': f'Bearer {config.get("line-bot", "channel_access_token")}'
 }
 
 # setting MySQL
-db = SQLAlchemy()
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com/essential"
+# db = SQLAlchemy()
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com/essential"
 
-db.init_app(app)
+# db.init_app(app)
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -38,101 +41,74 @@ def index():
         return 'ok'
     body = request.json
     events = body["events"]
-    print(body)
+    # print(body)
     if "replyToken" in events[0]:
-        payload = dict()
+        payload = {}
         replyToken = events[0]["replyToken"]
         payload["replyToken"] = replyToken
         if events[0]["type"] == "message":
             if events[0]["message"]["type"] == "text":
                 text = events[0]["message"]["text"]
-
-                if text == "查詢歷史價格":
-                    payload["messages"] = [ProductConfirm()]
-                    text == ""
-                elif text == "查詢商品比價":
-                    payload["messages"] = [getPlayStickerMessage()]
+                if text == "查詢歷史價格" or text == "查詢商品比價":
+                    payload["messages"] = [confirmProduct(payload)]
                 else:
-                    payload["messages"] = [ProductConfirm()]
-               
-                replyMessage(payload)
-            elif events[0]["message"]["type"] == "location":
-                title = events[0]["message"]["title"]
-                latitude = events[0]["message"]["latitude"]
-                longitude = events[0]["message"]["longitude"]
-                payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
-                replyMessage(payload)
+                    payload["messages"] = [confirmSearch(text)]
+
+            elif events[0]["message"]["type"] == "image":
+                # 先儲存使用者傳入的照片
+                pic_id = events[0]["message"]["id"]
+                image_name = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(4))
+                image_name = image_name + ".jpg"
+                image_content = line_bot_api.get_message_content(pic_id)
+                with open(f"./image/{image_name}", "wb") as i:
+                    for pic in image_content.iter_content():
+                        i.write(pic)
+                payload["messages"] = [imgProcess(image_name)]
+
+            replyMessage(payload)
+        elif events[0]["type"] == "postback":
+            data = json.loads(events[0]["postback"]["data"])
+            if data['label'] == '查詢歷史價格':
+                # 將data['text']傳入查詢歷史價格的SQL function, return result, tpye=list
+                payload["messages"] = [
+                        {
+                            "type": "text",
+                            "text": f"您欲查詢{data['text']}的歷史價格"
+                        }
+                    ]
+            elif data['label'] == '查詢比價資訊':
+                # 將data['text']傳入查詢比價的SQL function, return result, tpye=list
+                payload["messages"] = [
+                        {
+                            "type": "text",
+                            "text": f"您欲查詢{data['text']}的比價資訊"
+                        }
+                    ]
+            
+            replyMessage(payload)
 
     return 'OK'
 
 
-@app.route('/dbMart')
-def martSQL(data):
-    date = datetime.date.today()
-    sql_cmd = f"""
-        select 
-            pd.product_name, 
-            pr.price
-        from product pd
-            join price pr
-                on pd.id = pr.product_id
-        where 
-            pd.product_name like '%{data["title"]}%' and pr.`date` = {date}
-        """
+# @app.route('/dbMart')
+# def connSQL(data):
+#     date = datetime.date.today()
+#     sql_cmd = f"""
+#         select 
+#             pd.product_name, 
+#             pr.price
+#         from product pd
+#             join price pr
+#                 on pd.id = pr.product_id
+#         where 
+#             pd.product_name like '%{data["title"]}%' and pr.`date` = {date}
+#         """
 
-    query_data = db.engine.execute(sql_cmd)
-    print(query_data)
-    return 'ok'
-
-
-@app.route('/dbHistory')
-def historySQL(data):
-    sql_cmd = f"""
-        select 
-            pd.product_name, 
-            pr.price
-        from product pd
-            join price pr
-                on pd.id = pr.product_id
-        where pd.product_name like f'%{data["title"]}%'
-        """
-
-    query_data = db.engine.execute(sql_cmd)
-    print(query_data)
-    return 'ok'
+#     query_data = db.engine.execute(sql_cmd)
+#     return query_data
 
 
-def getMartPrice(data):
-    message = {
-                "type": "template",
-                "altText": "this is a image carousel template",
-                "template": {
-                    "type": "image_carousel",
-                    "columns": [
-                    {
-                        "imageUrl": f"{end_point}/static/taipei_101.jpeg",
-                        "action": {
-                        "type": "postback",
-                        "label": "台北101",
-                        "data": json.dumps(data)
-                        }
-                    },
-                    {
-                        "imageUrl": f"{end_point}/static/taipei_1.jpeg",
-                        "action": {
-                        "type": "postback",
-                        "label": "台北101",
-                        "data": json.dumps(data)
-                        }
-                    }
-                    ]
-                }
-            }
-    return message
-
-
-def ProductConfirm(payload):
-    data = {"title": title}
+def confirmSearch(text):
     message = {
                 "type": "template",
                 "altText": "this is a confirm template",
@@ -143,12 +119,12 @@ def ProductConfirm(payload):
                     {
                         "type": "postback",
                         "label": "查詢歷史價格",
-                        "data": json.dumps(data)
+                        "data": json.dumps({'text': text, 'label': "查詢歷史價格"})
                     },
                     {
                         "type": "postback",
-                        "label": "查詢比價結果",
-                        "data": json.dumps(data)
+                        "label": "查詢比價資訊",
+                        "data": json.dumps({'text': text, 'label': "查詢比價資訊"})
                     }
                     ]
                 }
@@ -156,27 +132,92 @@ def ProductConfirm(payload):
     return message
 
 
+def confirmProduct(payload):
+    payload["messages"] = [{"type": "text", "text": '請上傳商品圖片，或輸入商品名稱。'}]
+    replyMessage(payload)
 
-@app.route('/upload_file', methods=['POST'])
-def upload_file():
-    payload = dict()
-    if request.method == 'POST':
-        file = request.files['file']
-        print("json:", request.json)
-        form = request.form
-        age = form['age']
-        gender = ("男" if form['gender'] == "M" else "女") + "性"
-        if file:
-            filename = file.filename
-            img_path = os.path.join(UPLOAD_FOLDER, filename)
-            file.save(img_path)
-            print(img_path)
-            payload["to"] = my_line_id
-            payload["messages"] = [getImageMessage(F"{end_point}/{img_path}"),
-                {
-                    "type": "text",
-                    "text": F"年紀：{age}\n性別：{gender}"
-                }
-            ]
-            pushMessage(payload)
+
+def historyPrice(events, payload):
+    if events[0]["type"] == "message":
+        if events[0]["message"]["type"] == "text":
+            text = events[0]["message"]["text"]
+            result = {'type': 'text', 'text': f'您想查詢{text}的歷史價格'}
+            # result = connSQL(text)
+        # elif 
+        return result
+
+
+# def martPrice():
+#     reply = '請上傳商品圖片，或輸入商品名稱。'
+#     replyMessage(reply)
+#     if events[0]["type"] == "message":
+#         if events[0]["message"]["type"] == "text":
+#             text = events[0]["message"]["text"]
+#             result = f'您想查詢{text}的比價資訊'
+#             # result = connSQL(text)
+#         # elif 
+#         return result
+
+
+def replyMessage(payload):
+    r = requests.post("https://api.line.me/v2/bot/message/reply", data=json.dumps(payload), headers=HEADER)
+    print(r.text)
     return 'OK'
+
+
+def imgProcess(image_name):
+    img_path = f"./image/{image_name}"
+    img = cv2.imread(img_path)
+    img = cv2.resize(img, (256, 256))
+    img = np.array(img)
+    img_array = []
+    img_array.append(img)
+    img_array = np.asarray(img_array)
+    os.remove(img_path)
+    return imgPredict(img_array)
+
+
+def imgPredict(img):
+    # 載入訓練好的model
+    model_pred = tf.keras.models.load_model('G:/我的雲端硬碟/Colab_Notebooks/model_0830.h5')
+  
+    # Prediction
+    pred = model_pred.predict(img)
+
+    brand = {'iMeiMilk': 0, 'LimFengInMilk': 1, 'JuHsiangMilk': 2, 'FreshDelightMilk': 3, 'KuangChuanMilk': 4, 
+          'LargeReiSuiMilk': 5, 'SmallReiSuiMilk': 6, 'LowFatLargeReiSuiMilk': 7, 'LowFatSmallReiSuiMilk': 8}
+    message = {"type": "text"}
+    out = np.argmax(pred, axis=1)
+    for i in brand:
+        if out == brand[i]:
+            message["text"] = i
+    return message
+
+
+# @app.route('/upload_file', methods=['POST'])
+# def upload_file():
+#     payload = dict()
+#     if request.method == 'POST':
+#         file = request.files['file']
+#         print("json:", request.json)
+        # form = request.form
+        # age = form['age']
+        # gender = ("男" if form['gender'] == "M" else "女") + "性"
+        # if file:
+        #     filename = file.filename
+        #     img_path = os.path.join(UPLOAD_FOLDER, filename)
+        #     file.save(img_path)
+        #     print(img_path)
+        #     payload["to"] = my_line_id
+        #     payload["messages"] = [getImageMessage(F"{end_point}/{img_path}"),
+        #         {
+        #             "type": "text",
+        #             "text": F"年紀：{age}\n性別：{gender}"
+        #         }
+        #     ]
+        #     pushMessage(payload)
+    # return 'OK'
+
+
+if __name__ == "__main__":
+    app.run()
