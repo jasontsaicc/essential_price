@@ -195,6 +195,10 @@ def shop_details(Product_id):  # put application's code here
     product_url = query_data_list[0][6]
     return render_template('shop-details.html', Product_id=Product_id, name=name, pic_url=pic_url, price=price, category_id=category_id, date=date, product_url=product_url)
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html', error=error)
+
 
 if __name__ == '__main__':
     app.run()
