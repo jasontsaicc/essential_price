@@ -3,7 +3,7 @@ import boto3
 from botocore.exceptions import ClientError
 import os
 from boto3.session import Session
-session = Session(aws_access_key_id='AKIAXLGUPNLYCONS5KRO', aws_secret_access_key='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', region_name='us-east-1')
+session = Session(aws_access_key_id='AWS_ACCESS_KEY_ID', aws_secret_access_key='AWS_SECRET_ACCESS_KEY', region_name='REGION')
 
 #获取s3连接的session
 s3 = session.resource('s3')
@@ -12,8 +12,8 @@ for bucket in s3.buckets.all():
 
 
 
-os.environ['AWS_ACCESS_KEY_ID'] = "AKIAXLGUPNLYCONS5KRO"
-os.environ['AWS_SECRET_ACCESS_KEY'] = "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"
+os.environ['AWS_ACCESS_KEY_ID'] = "AWS_ACCESS_KEY_ID"
+os.environ['AWS_SECRET_ACCESS_KEY'] = "AWS_SECRET_ACCESS_KEY"
 
 s3 = boto3.client('s3')
 s3.download_file('tests3buckettt', 'IMG_0426.jpg', 'IMG_0426.jpg')
