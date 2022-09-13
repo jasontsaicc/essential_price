@@ -1,4 +1,4 @@
-from tgi102_flask.app.py import sa, BASE, relationship
+from tgi102_flask import sa, BASE, relationship
 
 
 
@@ -8,3 +8,6 @@ class Category(BASE):
     category_name = sa.Column(sa.String(64), unique=True, )
 
     fk_product_category = relationship('Product')
+
+    def __repr__(self):
+        return f"id={self.id}, category_name={self.category_name}"

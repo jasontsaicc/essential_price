@@ -8,10 +8,23 @@ from flask import request, render_template
 from flask_paginate import Pagination, get_page_parameter
 
 
-app = Flask(__name__)
-
-from tgi102_flask.config import Config
-
 db = SQLAlchemy()
+
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
+    db.init_app(app)
+    return app
+
+
+# app = Flask(__name__)
+app = create_app()
+app.app_context().push()
+# from tgi102_flask.config import Config
 BASE = declarative_base()
-db.init_app(app)
+# db.init_app(app)
+
+
+Session = sessionmaker(bind=db.engine)
+session = Session()

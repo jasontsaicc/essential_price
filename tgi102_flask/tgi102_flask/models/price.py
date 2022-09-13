@@ -9,3 +9,6 @@ class Price(BASE):
     price = sa.Column(sa.Integer)
 
     product_id = sa.Column(sa.Integer, sa.ForeignKey('product.id'))
+
+    def __repr__(self):
+        return f"id={self.id}, date={self.date}, price={self.price}"

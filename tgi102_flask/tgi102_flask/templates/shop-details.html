@@ -25,7 +25,7 @@
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="item-one" role="tabpanel" aria-labelledby="item-one-tab">
                                             <div class="shop-details-img">
-                                                <img src="{{ pic_url }}" alt="">
+                                                <img src="{{ details_pic_url }}" alt="">
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="item-two" role="tabpanel" aria-labelledby="item-two-tab">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="shop-details-content">
-                                <h4 class="title">{{ name }}</h4>
+                                <h4 class="title">{{ details_name }}</h4>
                                 <div class="shop-details-meta">
                                     <ul>
                                         <li>Bands : <a href="shop.html">Ganic</a></li>
@@ -58,21 +58,21 @@
                                             </div>
                                             <span>Review</span>
                                         </li>
-                                        <li>ID : <span>{{ Product_id }}</span></li>
+                                        <li>ID : <span>{{ details_Product_id }}</span></li>
                                     </ul>
                                 </div>
                                 <div class="shop-details-price">
-                                    <h2 class="price">${{ price }}</h2>
+                                    <h2 class="price">${{ details_price }}</h2>
                                     <h5 class="stock-status">- IN Stock</h5>
                                 </div>
 {#                                <p>Organic food is food produced by methods complying with the standards of Rrganic farming. Standards vary Lorem ipsum#}
 {#                                dolor sit amet, consectetur adipiscing worldwide, but organic farming.</p>#}
                                 <div class="shop-details-list">
                                     <ul>
-                                        <li>種類 : <span>{{ category_id}}</span></li>
-                                        <li>查詢日期 : <span>{{ date }}</span></li>
+                                        <li>種類 : <span>{{ details_category_id}}</span></li>
+                                        <li>查詢日期 : <span>{{ details_date }}</span></li>
                                         <li>店家 : <span> {{ mart_name }}</span></li>
-                                        <li>網址 : <span> {{ product_url }}</span></li>
+                                        <li>網址 : <span> {{ details_product_url }}</span></li>
                                     </ul>
                                 </div>
                                 <div class="shop-perched-info">

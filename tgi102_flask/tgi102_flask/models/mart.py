@@ -7,3 +7,6 @@ class Mart(BASE):
     mart_name = sa.Column(sa.String(255), unique=True)
 
     fk_product_mart = relationship('Product')
+
+    def __repr__(self):
+        return f"id={self.id}, mart_name={self.mart_name}"

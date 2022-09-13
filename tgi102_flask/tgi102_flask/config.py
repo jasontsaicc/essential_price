@@ -1,5 +1,6 @@
 from . import app
 import os
+import sqlalchemy as sa
 
 config_path = os.path.abspath(os.path.dirname(__file__))
 print(config_path)

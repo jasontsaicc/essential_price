@@ -14,3 +14,6 @@ class Product(BASE):
 
     category_id = sa.Column(sa.String(64), sa.ForeignKey('category.id'))
     mart_id = sa.Column(sa.String(64), sa.ForeignKey('marts.id'))
+
+    def __repr__(self):
+        return f"id={self.id}, product_name={self.product_name}, product_url={self.product_url}, product_pic_url={self.product_pic_url}"
