@@ -68,6 +68,8 @@ class Pxmart:
 
         except Exception as e:
             print(e)
+        
+        return result
 
     def get_category(self):
         self.url = "https://shop.pxmart.com.tw/v2/official/SalePageCategory/0?sortMode=Newest"
