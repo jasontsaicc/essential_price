@@ -1,5 +1,4 @@
-
-
+from tgi102_flask import sa, BASE, relationship
 
 
 class Mart(BASE):

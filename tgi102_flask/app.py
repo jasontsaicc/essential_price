@@ -1,23 +1,4 @@
-from flask import Flask
-from flask import send_from_directory, render_template
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import sessionmaker
-from flask import request
-from flask_paginate import Pagination, get_page_parameter
-
-app = Flask(__name__)
-db = SQLAlchemy()
-
-# MySql datebase
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
-
-db.init_app(app)
-
-
-
-# Read data
-
+from tgi102_flask import app, db, render_template, request, get_page_parameter, Pagination
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -28,7 +9,6 @@ def hello_world():  # put application's code here
 
     for i in query_data:
         query_data_list.append(i)
-
 
 
     Product1_id = query_data_list[0][0]
