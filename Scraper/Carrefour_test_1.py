@@ -14,11 +14,11 @@ import time
 # print(collection)
 class main:
     def __init__(self):
-        # self.option = Options()
-        # self.option.add_argument('headless')  # 啟動無頭模式
-        # self.option.add_argument('disable-gpu')  # windows必須加入此行
-        # self.driver = webdriver.Chrome(options=self.option)
-        self.driver = webdriver.Chrome()
+        self.option = Options()
+        self.option.add_argument('headless')  # 啟動無頭模式
+        self.option.add_argument('disable-gpu')  # windows必須加入此行
+        self.driver = webdriver.Chrome(options=self.option)
+#         self.driver = webdriver.Chrome()
     def get_ALLproduction(self,url_list):
 #         url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
 #                     "https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#",  # 冷凍食品
@@ -92,9 +92,7 @@ class main:
             all_product.clear()
         self.driver.close()
 
-if __name__ == '__main__':
-    carrefour = main()
-    carrefour.get_ALLproduction()
+
 
 
 
