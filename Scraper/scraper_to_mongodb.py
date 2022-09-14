@@ -41,7 +41,8 @@ def carr(data):
             'Market': 'market', 
             'Price': 'price', 
             'Product_name': 'product_name', 
-            'Url': 'url'}}, 
+            'Url': 'product_url',
+            'PicUrl': 'photos'}}, 
         upsert=False)
 
 
