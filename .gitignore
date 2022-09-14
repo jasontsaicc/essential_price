@@ -4,6 +4,8 @@
 *.xml
 *.iml
 *.name
+*.h5
+static/upload/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
