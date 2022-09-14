@@ -4,7 +4,7 @@ import datetime
 
 
 client = MongoClient(host="localhost", port=27017)
-db = client.config
+db = client.admin
 collection = db['test']
 # client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
 # db = client.All_Market
