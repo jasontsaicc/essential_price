@@ -19,7 +19,7 @@ class main:
         # self.option.add_argument('disable-gpu')  # windows必須加入此行
         # self.driver = webdriver.Chrome(options=self.option)
         self.driver = webdriver.Chrome()
-    def get_ALLproduction(self):
+    def get_ALLproduction(self,url_list):
 #         url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
 #                     "https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#",  # 冷凍食品
 #                     "https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#", # 零食飲料
