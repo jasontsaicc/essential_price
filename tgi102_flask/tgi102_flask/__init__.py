@@ -4,7 +4,7 @@ import sqlalchemy as sa
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
-from flask import request, render_template
+from flask import request, render_template, redirect, url_for
 from flask_paginate import Pagination, get_page_parameter
 
 
@@ -14,6 +14,9 @@ def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
+    app.config['UPLOAD_FOLDER'] = "tgi102_flask/static/upload/"
+    app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
+
     db.init_app(app)
     return app
 

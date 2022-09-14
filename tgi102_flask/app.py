@@ -1,5 +1,15 @@
-from tgi102_flask import app, db, render_template, request, get_page_parameter, Pagination, session
+from tgi102_flask import app, db, render_template, request, get_page_parameter, Pagination, session, redirect, url_for
 from tgi102_flask.models import product, price, category, mart
+from flask import jsonify
+import os
+import pandas as pd
+import numpy as np
+import cv2
+from md_test import milk_model
+from werkzeug.datastructures import MultiDict
+from werkzeug.utils import secure_filename
+
+
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -168,6 +178,62 @@ def shop_details(Product_id):  # put application's code here
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html', error=error)
+
+# @app.route('/update-pic', methods=["GET", "POST"])
+# def uploadprocess():
+#     print('upload post')
+#     if 'input-id' not in request.files:
+#         return jsonify({"errno": 100, "errmsg": "無檔案"})
+#     if request.method == 'POST':
+#         files = request.files.getlist('input-id')
+#
+#         for file in files:
+#             filename = file.filename
+#             print("file", file)
+#             print("filename", filename)
+#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#             print(jsonify({"errno": 0, "errmsg": "上傳成功"}))
+#
+#         return jsonify({"errno": 0, "errmsg": "上傳成"})
+#     return render_template('blog-details.html')
+
+@app.route('/upload_search', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # file = request.files['file'].read()
+        # file = request.files
+        files = request.files.getlist('file')
+        photo = request.files['file'].read()
+        # print("photo", photo)
+
+        for file in files:
+            filename = file.filename
+            # file.save(app.config['UPLOAD_FOLDER'], filename)
+            file.save(f'tgi102_flask/static/upload/{filename}')
+        upload_photo = f'/static/upload/{filename}'
+        print("upload_photo", upload_photo)
+
+        # img = cv2.imread(f'tgi102_flask/static/upload/{filename}')
+        # print("img", img)
+
+        photo_fromstring = np.fromstring(photo, np.uint8)
+        print("photo_fromstring", photo_fromstring)
+        photo_imdecode = cv2.imdecode(photo_fromstring, cv2.IMREAD_COLOR)[:, :, ::-1]
+        # milk_model(photo_imdecode)
+        result = milk_model(photo_imdecode)
+
+
+        return redirect(url_for('uploaded_file', filename=result))
+    return render_template('upload_search.html')
+
+#
+@app.route('/search/<filename>')
+def uploaded_file(filename):
+    return render_template('result_2.html', filename=filename)
+
+
+
+
 
 
 if __name__ == '__main__':
