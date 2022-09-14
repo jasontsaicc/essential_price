@@ -20,18 +20,18 @@ class main:
         # self.driver = webdriver.Chrome(options=self.option)
         self.driver = webdriver.Chrome()
     def get_ALLproduction(self):
-        url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
-                    "https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#",  # 冷凍食品
-                    "https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#", # 零食飲料
-                    "https://online.carrefour.com.tw/zh/%E7%B1%B3%E6%B2%B9%E6%B2%96%E6%B3%A1?start={}#",  # 米油沖泡
-                    "https://online.carrefour.com.tw/zh/%E7%BE%8E%E5%A6%9D%E8%AD%B7%E7%90%86?start={}#",  # 美妝護理
-                    "https://online.carrefour.com.tw/zh/%E6%AF%8D%E5%AC%B0%E4%BF%9D%E5%81%A5?start={}#",  # 嬰兒
-                    "https://online.carrefour.com.tw/zh/%E7%94%9F%E6%B4%BB%E4%BC%91%E9%96%92?start={}#",  # 生活休閒
-                    "https://online.carrefour.com.tw/zh/%E6%97%A5%E7%94%A8%E7%99%BE%E8%B2%A8?start={}#",  # 日用百貨
-                    "https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#",  # 家具
-                    "https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#",  # 服飾
-                    "https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#",  # 家電
-                    "https://online.carrefour.com.tw/zh/3c?start={}#"]  # 3C
+#         url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
+#                     "https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#",  # 冷凍食品
+#                     "https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#", # 零食飲料
+#                     "https://online.carrefour.com.tw/zh/%E7%B1%B3%E6%B2%B9%E6%B2%96%E6%B3%A1?start={}#",  # 米油沖泡
+#                     "https://online.carrefour.com.tw/zh/%E7%BE%8E%E5%A6%9D%E8%AD%B7%E7%90%86?start={}#",  # 美妝護理
+#                     "https://online.carrefour.com.tw/zh/%E6%AF%8D%E5%AC%B0%E4%BF%9D%E5%81%A5?start={}#",  # 嬰兒
+#                     "https://online.carrefour.com.tw/zh/%E7%94%9F%E6%B4%BB%E4%BC%91%E9%96%92?start={}#",  # 生活休閒
+#                     "https://online.carrefour.com.tw/zh/%E6%97%A5%E7%94%A8%E7%99%BE%E8%B2%A8?start={}#",  # 日用百貨
+#                     "https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#",  # 家具
+#                     "https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#",  # 服飾
+#                     "https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#",  # 家電
+#                     "https://online.carrefour.com.tw/zh/3c?start={}#"]  # 3C
         # date_time = datetime.datetime.now()
         # update = date_time.date()
         update = datetime.date.today()  # 取得抓取的日期
@@ -83,7 +83,7 @@ class main:
                                 all_product.append(data)
                                 continue
                         num += 24
-                    # return all_product
+                    return all_product
                 except IndexError as I:
                     break
             collection.insert_many(all_product)
