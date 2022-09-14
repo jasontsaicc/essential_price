@@ -66,8 +66,8 @@ class main:
                                         "Market": "Carefour",
                                         "Price": price,
                                         "Product_name": name + ' ' + str(count),
-                                        "PicUrl": pic,
-                                        "Url": product_url}
+                                        "Url": product_url,
+                                        "PicUrl": pic}
                                 # print(data)
                                 all_product.append(data)
 
@@ -77,8 +77,8 @@ class main:
                                         "Market": "Carefour",
                                         "Price": price,
                                         "Product_name": names,
-                                        "PicUrl": pic,
-                                        'Url': product_url}
+                                        "Url": product_url,
+                                        "PicUrl": pic,}
                                 # print(data)
                                 all_product.append(data)
                                 continue
