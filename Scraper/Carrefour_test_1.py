@@ -8,10 +8,10 @@ from pymongo import MongoClient
 import time
 
 # sleep_time = random.randint(1, 5)
-client = MongoClient(host="localhost", port=27017)
-db = client.admin
-collection = db['log']
-print(collection)
+# client = MongoClient(host="localhost", port=27017)
+# db = client.admin
+# collection = db['log']
+# print(collection)
 class main:
     def __init__(self):
         # self.option = Options()
@@ -86,9 +86,9 @@ class main:
                     return all_product
                 except IndexError as I:
                     break
-            collection.insert_many(all_product)
-            print(all_product)
-            print("=======================================")
+#             collection.insert_many(all_product)
+#             print(all_product)
+#             print("=======================================")
             all_product.clear()
         self.driver.close()
 
