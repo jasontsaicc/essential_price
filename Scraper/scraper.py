@@ -115,6 +115,7 @@ dic_carrefour_category = {'fresh_food': 'https://online.carrefour.com.tw/zh/%E7%
                           '3C': 'https://online.carrefour.com.tw/zh/3c?start={}#',
                           }
 ca = c.main()
-for category, production in dic_carrefour_category.items():
-  ca_data = ca.get_ALLproduction(category,production)
+for category in dic_carrefour_category:
+  num_production = dic_carrefour_category[category]
+  ca_data = ca.get_ALLproduction(category,num_production)
   m.carr(ca_data)
