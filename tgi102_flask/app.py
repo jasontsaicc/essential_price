@@ -300,53 +300,41 @@ def search_results(query):
                     n += 1
 
 
-    print("return_list", return_list)
-    print("return_list[0]", return_list[0][0])
-    print("return_list[0][1]", return_list[0][1])
-    print("return_list[0][2]", return_list[0][2])
-    print("return_list[0][3]", return_list[0][3])
-
-
-
-    try:
-        search_product_id1 = return_list[0][2]
-        search_name1 = return_list[0][0]
-        search_pic_url1 = return_list[0][3]
-        search_price1 = return_list[0][1]
-
-        search_product_id2 = return_list[1][2]
-        search_name2 = return_list[1][0]
-        search_pic_url2 = return_list[1][3]
-        search_price2 = return_list[1][1]
-
-        search_product_id3 = return_list[2][2]
-        search_name3 = return_list[2][0]
-        search_pic_url3 = return_list[2][3]
-        search_price3 = return_list[2][1]
-
-        search_product_id4 = return_list[3][2]
-        search_name4 = return_list[3][0]
-        search_pic_url4 = return_list[3][3]
-        search_price4 = return_list[3][1]
-    except:
-        pass
+    # print("return_list", return_list)
+    # print("return_list[0]", return_list[0][0])
+    # print("return_list[0][1]", return_list[0][1])
+    # print("return_list[0][2]", return_list[0][2])
+    # print("return_list[0][3]", return_list[0][3])
+    #
+    #
+    #
+    # try:
+    #     search_product_id1 = return_list[0][2]
+    #     search_name1 = return_list[0][0]
+    #     search_pic_url1 = return_list[0][3]
+    #     search_price1 = return_list[0][1]
+    #
+    #     search_product_id2 = return_list[1][2]
+    #     search_name2 = return_list[1][0]
+    #     search_pic_url2 = return_list[1][3]
+    #     search_price2 = return_list[1][1]
+    #
+    #     search_product_id3 = return_list[2][2]
+    #     search_name3 = return_list[2][0]
+    #     search_pic_url3 = return_list[2][3]
+    #     search_price3 = return_list[2][1]
+    #
+    #     search_product_id4 = return_list[3][2]
+    #     search_name4 = return_list[3][0]
+    #     search_pic_url4 = return_list[3][3]
+    #     search_price4 = return_list[3][1]
+    # except:
+    #     pass
 
 
 
     # 搜索结果返回给前端
-    return render_template(*'search_results.html', query=query,
-                           product_id1=search_product_id1, name1=search_name1, pic_url1=search_pic_url1, price1=search_price1,
-                           product_id2=search_product_id2, name2=search_name2, pic_url2=search_pic_url2, price2=search_price2,
-                           product_id3=search_product_id3, name3=search_name3, pic_url3=search_pic_url3, price3=search_price3,
-                           product_id4=search_product_id4, name4=search_name4, pic_url4=search_pic_url4, price4=search_price4,)
-                           # product_id5=search_product_id5, name5=search_name5, pic_url5=search_pic_url5, price5=search_price5,
-                           # product_id6=search_product_id6, name6=search_name6, pic_url6=search_pic_url6, price6=search_price6,
-                           # product_id7=search_product_id7, name7=search_name7, pic_url7=search_pic_url7, price7=search_price7,
-                           # product_id8=search_product_id8, name8=search_name8, pic_url8=search_pic_url8, price8=search_price8,
-                           # product_id9=search_product_id9, name9=search_name9, pic_url9=search_pic_url9, price9=search_price9,
-                           # product_id10=search_product_id10, name10=search_name10, pic_url10=search_pic_url10, price10=search_price10,
-                           # product_id11=search_product_id11, name11=search_name11, pic_url11=search_pic_url11, price11=search_price11,
-                           # product_id12=search_product_id12, name12=search_name12, pic_url12=search_pic_url12, price12=search_price12)
+    return render_template('search_results.html', query=query, return_list=return_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
