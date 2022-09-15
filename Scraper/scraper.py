@@ -101,21 +101,20 @@ for ff in product_type:
 
 
 # carrefour scraper
-url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
-            "https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#",  # 冷凍食品
-            "https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#", # 零食飲料
-            "https://online.carrefour.com.tw/zh/%E7%B1%B3%E6%B2%B9%E6%B2%96%E6%B3%A1?start={}#",  # 米油沖泡
-            "https://online.carrefour.com.tw/zh/%E7%BE%8E%E5%A6%9D%E8%AD%B7%E7%90%86?start={}#",  # 美妝護理
-            "https://online.carrefour.com.tw/zh/%E6%AF%8D%E5%AC%B0%E4%BF%9D%E5%81%A5?start={}#",  # 嬰兒
-            "https://online.carrefour.com.tw/zh/%E7%94%9F%E6%B4%BB%E4%BC%91%E9%96%92?start={}#",  # 生活休閒
-            "https://online.carrefour.com.tw/zh/%E6%97%A5%E7%94%A8%E7%99%BE%E8%B2%A8?start={}#",  # 日用百貨
-            "https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#",  # 家具
-            "https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#",  # 服飾
-            "https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#",  # 家電
-            "https://online.carrefour.com.tw/zh/3c?start={}#"]
-production = ['fresh_food', 'frozen_food', 'drink_snacks', 'rice_oil_powder', 'make_up', 'baby', 'life_style',
-              'daily_use', 'furniture', 'clothing', 'electrical', '3C']
+dic_carrefour_category = {'fresh_food': 'https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#',
+                          'frozen_food': 'https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#',
+                          'drink_snacks': 'https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#',
+                          'rice_oil_powder': 'https://online.carrefour.com.tw/zh/%E7%B1%B3%E6%B2%B9%E6%B2%96%E6%B3%A1?start={}#',
+                          'make_up': 'https://online.carrefour.com.tw/zh/%E7%BE%8E%E5%A6%9D%E8%AD%B7%E7%90%86?start={}#',
+                          'baby': 'https://online.carrefour.com.tw/zh/%E6%AF%8D%E5%AC%B0%E4%BF%9D%E5%81%A5?start={}#',
+                          'life_style': 'https://online.carrefour.com.tw/zh/%E7%94%9F%E6%B4%BB%E4%BC%91%E9%96%92?start={}#',
+                          'daily_use': 'https://online.carrefour.com.tw/zh/%E6%97%A5%E7%94%A8%E7%99%BE%E8%B2%A8?start={}#',
+                          'furniture': 'https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#',
+                          'clothing': 'https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#',
+                          'electrical': 'https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#',
+                          '3C': 'https://online.carrefour.com.tw/zh/3c?start={}#',
+                          }
 ca = c.main()
-for category in url_list:
+for category, production in dic_carrefour_category.items():
   ca_data = ca.get_ALLproduction(category,production)
   m.carr(ca_data)
