@@ -87,7 +87,9 @@
                         <div class="col-xl-10 col-lg-9">
                             <div class="d-block d-sm-flex align-items-center justify-content-end">
                                 <div class="header-search-wrap">
-                                    <form action="#">
+                                    <form class="navbar-form navbar-left" action="/search" method="POST">
+
+{#                                    <form action="#">#}
                                         <select class="custom-select">
                                             <option selected="">所有類別</option>
                                             <option>-- 生鮮食品</option>
@@ -102,14 +104,10 @@
                                             <option>-- 其他</option>
                                         </select>
 
-                                        <input type="text" placeholder="找尋產品...">
-                                        <button><i class="flaticon-loupe-1"></i></button>
+{#                                        <input type="text" placeholder="找尋產品...">#}
+                                        <input type="text" class="form-control" placeholder="站内搜索" name="search" >
 
-
-{#                                        <label class="form-label" for="customFile">Default file input example</label>#}
-{#                                        <input type="file" class="form-control" id="customFile" />#}
-
-
+                                        <button><i type="submit" class="flaticon-loupe-1"></i></button>
 
                                     </form>
                                 </div>

@@ -1,19 +1,18 @@
 from tgi102_flask import app, db, render_template, request, get_page_parameter, Pagination, session, redirect, url_for
-from tgi102_flask.models import product, price, category, mart
+from tgi102_flask.model import Product, Price, Category, Mart
+
 from flask import jsonify
 import os
 import pandas as pd
 import numpy as np
 import cv2
 from md_test import milk_model
-from werkzeug.datastructures import MultiDict
-from werkzeug.utils import secure_filename
 
 
 
 @app.route('/')
 def hello_world():  # put application's code here
-    index_sql = db.session.query(product.Product, price.Price).filter(product.Product.id == price.Price.product_id).order_by(db.func.rand()).limit(8)
+    index_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id).order_by(db.func.rand()).limit(8)
     query_data_list = []
 
     for i in index_sql:
@@ -81,12 +80,12 @@ def category(Category_id):  # put application's code here
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
 
-    count_category_sql = db.session.query(db.func.count(product.Product.id)).filter(product.Product.id == price.Price.product_id).filter(product.Product.category_id == Category_id).all()[0][0]
+    count_category_sql = db.session.query(db.func.count(Product.id)).filter(Product.id == Price.product_id).filter(Product.category_id == Category_id).all()[0][0]
     print(count_category_sql)
 
     pagination = Pagination(page=page, per_page=12, total=count_category_sql, search=search)
 
-    category_sql = db.session.query(product.Product, price.Price).filter(product.Product.id == price.Price.product_id).filter(product.Product.category_id == Category_id).order_by(db.func.rand()).limit(12).offset(end)
+    category_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id).filter(Product.category_id == Category_id).order_by(db.func.rand()).limit(12).offset(end)
     query_data_list = []
 
     for i in category_sql:
@@ -160,7 +159,7 @@ def category(Category_id):  # put application's code here
 @app.route('/shop-details/<Product_id>')
 def shop_details(Product_id):  # put application's code here
 
-    details_product_sql = db.session.query(product.Product, price.Price).filter(product.Product.id == {Product_id}).first()
+    details_product_sql = db.session.query(Product, Price).filter(Product.id == {Product_id}).first()
     query_data_list = []
 
     for i in details_product_sql:
@@ -208,6 +207,7 @@ def upload_file():
 
         for file in files:
             filename = file.filename
+            print("filename", filename)
             # file.save(app.config['UPLOAD_FOLDER'], filename)
             file.save(f'tgi102_flask/static/upload/{filename}')
         upload_photo = f'/static/upload/{filename}'
@@ -231,10 +231,19 @@ def upload_file():
 def uploaded_file(filename):
     return render_template('result_2.html', filename=filename)
 
-
-
-
-
+#
+# @app.route('/search', methods=['get', 'POST'])
+# def search():
+#     if request.method == 'POST':
+#         if not request.form['search']:
+#             return render_template('index-2.html')
+#         return redirect(url_for('.search_results', query=request.form['search']))
+#
+# @app.route('/search_results/<query>')
+# def search_results(query):
+#     results = Product.query.msearch('test').all()
+#     return render_template('search_results.html', query=query, results=results)
+# #     # flask_whooshalchemyplus.init_app(app)
 
 if __name__ == '__main__':
     app.run(debug=True)

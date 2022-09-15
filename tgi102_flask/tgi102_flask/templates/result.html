@@ -5,6 +5,15 @@
     <title>Hello</title>
 </head>
 <body>
-    結果是: {{ filename }}
+     <div class="col-lg-4">
+                {% if current_user %}
+                <form class="navbar-form navbar-left" action="{{url_for('main.search')}}" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="站内搜索" name="search" >
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+                {% endif %}
+            </div>
 </body>
 </html>
