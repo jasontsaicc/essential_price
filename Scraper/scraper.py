@@ -112,8 +112,10 @@ url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%9
             "https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#",  # 家具
             "https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#",  # 服飾
             "https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#",  # 家電
-            "https://online.carrefour.com.tw/zh/3c?start={}#"] 
+            "https://online.carrefour.com.tw/zh/3c?start={}#"]
+production = ['fresh_food', 'frozen_food', 'drink_snacks', 'rice_oil_powder', 'make_up', 'baby', 'life_style',
+              'daily_use', 'furniture', 'clothing', 'electrical', '3C']
 ca = c.main()
 for category in url_list:
-  ca_data = ca.get_ALLproduction(category)
+  ca_data = ca.get_ALLproduction(category,production)
   m.carr(ca_data)
