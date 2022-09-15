@@ -6,10 +6,10 @@ import numpy as np
 import tempfile
 import cv2
 from md_test import milk_model
-from perdiction import image, predict
+# from perdiction import image, predict
 
 # 檔案上傳的路徑
-UPLOAD_FOLDER = './test_img/'
+# UPLOAD_FOLDER = './test_img/'
 
 
 app = Flask(__name__)

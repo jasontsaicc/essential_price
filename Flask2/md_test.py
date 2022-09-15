@@ -13,9 +13,10 @@ import os, shutil
 from sklearn.preprocessing import LabelEncoder
 from keras.models import model_from_json, load_model
 
+# test_i = './test_img/linmilk._2.jpg'
 
 def milk_model(test_i):
-	new_model = tf.keras.models.load_model('./my_model.h5')
+	new_model = tf.keras.models.load_model('./model_0830.h5')
 	new_model.compile(
 		optimizer='adam',
 		loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True),
@@ -32,23 +33,15 @@ def milk_model(test_i):
 	test_img = np.array(test_img)
 
 	new_model.predict(test_img)
+	brand = {'義美全脂鮮乳': 0, '林鳳營全脂鮮乳': 1, '乳香世家鮮乳': 2, '福樂一番鮮特極鮮乳': 3, '光泉鮮乳': 4,
+			 '瑞穗全脂鮮奶': 5, '瑞穗全脂鮮奶': 6, '瑞穗低脂鮮奶': 7, '瑞穗低脂鮮奶': 8}
 	result = np.argmax(new_model.predict(test_img), axis=1)
 
 
-	if result[0] == 0:
-		re = "林鳳營"
-	elif result[0] == 1:
-		re = "乳香世家"
-	elif result[0] == 2:
-		re = "義美"
-	elif result[0] == 3:
-		re = "瑞穗"
-	elif result[0] == 4:
-		re = "福樂"
-	else:
-		re = "我不知道"
-
-	return re
+	for i in brand:
+		if result == brand[i]:
+			pd_name = i
+			return pd_name
 
 
 
