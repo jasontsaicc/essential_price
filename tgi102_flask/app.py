@@ -1,3 +1,5 @@
+import jieba
+
 from tgi102_flask import app, db, render_template, request, get_page_parameter, Pagination, session, redirect, url_for
 from tgi102_flask.model import Product, Price, Category, Mart
 
@@ -7,6 +9,7 @@ import pandas as pd
 import numpy as np
 import cv2
 from md_test import milk_model
+
 
 
 
@@ -227,23 +230,38 @@ def upload_file():
     return render_template('upload_search.html')
 
 #
-@app.route('/search/<filename>')
+@app.route('/search_photo/<filename>')
 def uploaded_file(filename):
     return render_template('result_2.html', filename=filename)
 
 #
-# @app.route('/search', methods=['get', 'POST'])
-# def search():
-#     if request.method == 'POST':
-#         if not request.form['search']:
-#             return render_template('index-2.html')
-#         return redirect(url_for('.search_results', query=request.form['search']))
-#
-# @app.route('/search_results/<query>')
-# def search_results(query):
-#     results = Product.query.msearch('test').all()
-#     return render_template('search_results.html', query=query, results=results)
-# #     # flask_whooshalchemyplus.init_app(app)
+@app.route('/search', methods=['get', 'POST'])
+def search():
+    if request.method == 'POST':
+        # 取出keyword
+        keyword = request.form['keyword']
+        print("keyword", keyword)
+        # 對keyword使用結巴
+
+        return redirect(url_for("search_results", query=keyword))
+    else:
+        return render_template('index-2.html')
+
+@app.route('/search_results/<query>')
+def search_results(query):
+    search_result = []
+    cut_keywords = jieba.cut_for_search(query)
+    print("cut_keywords", cut_keywords)
+    for cut_keyword in cut_keywords:
+        print("cut_keyword", cut_keyword)
+        search_result.extend(
+            db.session.query(Product, Price).distinct().filter(Product.product_name.like('%' + f"{cut_keyword}" + '%')).limit(3))
+        print("search_result", search_result)
+    # 記錄找了了多少数据
+    search_result_set = set(search_result)
+    print("search_result_set", search_result_set)
+    # 搜索结果返回给前端
+    return render_template('search_results.html', query=query, results=search_result_set)
 
 if __name__ == '__main__':
     app.run(debug=True)

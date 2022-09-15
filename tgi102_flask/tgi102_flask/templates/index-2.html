@@ -87,7 +87,7 @@
                         <div class="col-xl-10 col-lg-9">
                             <div class="d-block d-sm-flex align-items-center justify-content-end">
                                 <div class="header-search-wrap">
-                                    <form class="navbar-form navbar-left" action="/search" method="POST">
+                                    <form action="/search" method="POST">
 
 {#                                    <form action="#">#}
                                         <select class="custom-select">
@@ -105,9 +105,9 @@
                                         </select>
 
 {#                                        <input type="text" placeholder="找尋產品...">#}
-                                        <input type="text" class="form-control" placeholder="站内搜索" name="search" >
-
-                                        <button><i type="submit" class="flaticon-loupe-1"></i></button>
+{#                                        <input type="text" class="form-control" placeholder="站内搜索" name="search" >#}
+                                            <input type="text" name="keyword" placeholder="Search Product...">
+                                            <button type="submit"><i class="flaticon-loupe-1"></i></button>
 
                                     </form>
                                 </div>
