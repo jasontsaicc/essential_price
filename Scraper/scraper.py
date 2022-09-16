@@ -4,14 +4,12 @@ import Carrefour_test_1 as c
 import scraper_to_mongodb as m
 import pymongo
 from pymongo import MongoClient
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import datetime
 
-
-client = MongoClient(host="localhost", port=27017)
-db = client.admin
-collection = db['test']
-# client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
-# db = client.All_Market
+client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
+db = client.All_Market
 
 # pxmart scraper
 px = p.Pxmart()
@@ -115,7 +113,12 @@ dic_carrefour_category = {'fresh_food': 'https://online.carrefour.com.tw/zh/%E7%
                           '3C': 'https://online.carrefour.com.tw/zh/3c?start={}#',
                           }
 ca = c.main()
+option = Options()
+option.add_argument('headless')  # 啟動無頭模式
+option.add_argument('disable-gpu')  # windows必須加入此行
+driver = webdriver.Chrome(options=option)
 for category in dic_carrefour_category:
-  num_production = dic_carrefour_category[category]
-  ca_data = ca.get_ALLproduction(category,num_production)
-  m.carr(ca_data)
+    num_production = dic_carrefour_category[category]
+    ca_data = ca.get_ALLproduction(category, num_production)
+    m.carr(ca_data)
+driver.close()
