@@ -19,6 +19,9 @@ class main:
         self.option.add_argument('disable-gpu')  # windows必須加入此行
         self.driver = webdriver.Chrome(options=self.option)
 #         self.driver = webdriver.Chrome()
+    # 使用del 讓程式結束的時候關閉瀏覽器
+    # def __del__(self):
+    #     self.driver.close()
     def get_ALLproduction(self, category, num_production):
 
         # url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
@@ -88,7 +91,7 @@ class main:
             # collection.insert_many(all_product)
             # print(all_product)
             # print("=======================================")
-        self.driver.close()
+#         self.driver.close()
         return all_product
 # if __name__ == '__main__':
 #     carrefour = main()
