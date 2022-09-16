@@ -47,5 +47,5 @@ def carr(data):
 
 
 def pxmart(data):
-    collections = db.PxMart
+    collections = db.PxMart2
     collections.insert_many(data)
