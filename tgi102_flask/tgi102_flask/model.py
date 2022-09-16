@@ -25,11 +25,8 @@ class Mart(BASE):
         return f"id={self.id}, mart_name={self.mart_name}"
 
 
-
 class Price(BASE):
     __tablename__ = 'price'
-
-    __searchable__ = ['price']
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     # product_id = sa.Column(sa.Integer)
@@ -44,10 +41,6 @@ class Price(BASE):
 
 class Product(BASE):
     __tablename__ = 'product'
-    # flask_whooshalchemy
-    __searchable__ = ['product_name']
-    __analyzer__ = ChineseAnalyzer()
-
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     # mart_id = sa.Column(sa.String(64))

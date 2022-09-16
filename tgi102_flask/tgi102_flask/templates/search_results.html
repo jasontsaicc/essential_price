@@ -156,10 +156,9 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                            {%if data%}
-                                                {% for item in return_list %}
+{#                                            {%if return_list[0][2] in return_list %}#}
 
-                                                <a href="../../shop-details/{{ return_list[0][2] }}"><img src="{{ return_list[0][3] }}" alt=""></a>
+                                                <a href="../../shop-details/{{ return_list[0]['id'] }}"><img src="{{ return_list[0]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -169,7 +168,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../../shop-details/{{ return_list[0][2] }}">{{ return_list[0][0] }}</a></h6>
+                                                <h6 class="title"><a href="../../shop-details/{{ return_list[0]['id'] }}">{{ return_list[0]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -178,8 +177,9 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ return_list[0][1] }}</p>
+                                                <p>${{ return_list[0]['price'] }}</p>
                                             </div>
+{#                                            {%endif%}#}
                                         </div>
                                     </div>
 
@@ -187,7 +187,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch discount">25%</span>
-                                                <a href="../shop-details/{{ return_list[1][2] }}"><img src="{{ return_list[1][3] }}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[1]['id'] }}"><img src="{{ return_list[1]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -197,7 +197,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ return_list[1][2] }}">{{ return_list[1][0] }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[1]['id'] }}">{{ return_list[1]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -206,7 +206,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ return_list[0][1] }}</p>
+                                                <p>${{ return_list[1]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch discount">25%</span>
-                                                <a href="../shop-details/{{ return_list[2][2]}}"><img src="{{ return_list[2][3] }}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[2]['id'] }}"><img src="{{ return_list[2]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -224,7 +224,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ return_list[2][2] }}">{{ return_list[2][0] }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[2]['id'] }}">{{ return_list[2]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -233,7 +233,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ return_list[2][1] }}</p>
+                                                <p>${{ return_list[2]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +241,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ return_list[3][2] }}"><img src="{{ return_list[3][3] }}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[3]['id'] }}"><img src="{{ return_list[3]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -251,7 +251,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ return_list[3][2] }}">{{ return_list[3][0] }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[3]['id'] }}">{{ return_list[3]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -260,7 +260,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ return_list[3][1] }}</p>
+                                                <p>${{ return_list[3]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +268,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch discount">25%</span>
-                                                <a href="../shop-details/{{ return_list[0][2]}}"><img src="{{pic_url5}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[4]['id'] }}"><img src="{{ return_list[4]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -278,7 +278,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id5 }}">{{ name5 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[4]['id'] }}">{{ return_list[4]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -287,7 +287,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{price5 }}</p>
+                                                <p>${{ return_list[4]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -295,7 +295,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id6 }}"><img src="{{pic_url6}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[5]['id'] }}"><img src="{{ return_list[5]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -305,7 +305,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id6 }}">{{ name6 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[5]['id'] }}">{{ return_list[5]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -314,7 +314,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price6 }}</p>
+                                                <p>${{ return_list[5]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -322,7 +322,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id7 }}"><img src="{{pic_url7}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[6]['id'] }}"><img src="{{ return_list[6]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -332,7 +332,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id7 }}">{{ name7 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[6]['id'] }}">{{ return_list[6]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -341,7 +341,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price7 }}</p>
+                                                <p>${{ return_list[6]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -349,7 +349,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id8 }}"><img src="{{pic_url8}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[7]['id'] }}"><img src="{{ return_list[7]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -359,7 +359,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id8 }}">{{ name8 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[7]['id'] }}">{{ return_list[7]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -368,7 +368,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price8 }}</p>
+                                                <p>${{ return_list[7]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -376,7 +376,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id9 }}"><img src="{{pic_url9}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[8]['id'] }}"><img src="{{ return_list[8]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -386,7 +386,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id9 }}">{{ name9 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[8]['id'] }}">{{ return_list[8]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -395,7 +395,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price9 }}</p>
+                                                <p>${{ return_list[8]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -403,7 +403,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id10 }}"><img src="{{pic_url10}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[9]['id'] }}"><img src="{{ return_list[9]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -413,7 +413,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id10 }}">{{ name10 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[9]['id'] }}">{{ return_list[9]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -422,7 +422,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price10 }}</p>
+                                                <p>${{ return_list[9]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -430,7 +430,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id11 }}"><img src="{{pic_url11}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[10]['id'] }}"><img src="{{ return_list[10]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -440,7 +440,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id11 }}">{{ name11 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[10]['id'] }}">{{ return_list[10]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -449,7 +449,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price11 }}</p>
+                                                <p>${{ return_list[10]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -457,7 +457,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id12 }}"><img src="{{pic_url12}}" alt=""></a>
+                                                <a href="../shop-details/{{ return_list[11]['id'] }}"><img src="{{ return_list[11]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -467,7 +467,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id12 }}">{{ name12 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[11]['id'] }}">{{ return_list[11]['product_name'] }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -476,11 +476,11 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price12 }}</p>
+                                                <p>${{ return_list[11]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
-                            <div class="pagination-page-info">
+{#                            <div class="pagination-page-info">#}
 {#                            <div class="pagination-wrap">#}
 
                                 <ul>
@@ -500,10 +500,6 @@
                         </div>
                     </div>
                 </div>
-                                                {%else%}
-                                                    <p>No Data</p>
-                                                    {%endif%}
-                         {% endfor %}
             </section>
 
 

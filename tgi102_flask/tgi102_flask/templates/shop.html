@@ -143,7 +143,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div
                             </div>
                             <div class="shop-products-wrap">
                                 <div class="row justify-content-center">
@@ -151,7 +151,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../../shop-details/{{ product_id1 }}"><img src="{{pic_url1}}" alt=""></a>
+                                                <a href="../../shop-details/{{ query_data_list[0][0].id }}"><img src="{{ query_data_list[0][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -161,7 +161,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../../shop-details/{{ product_id1 }}">{{ name1 }}</a></h6>
+                                                <h6 class="title"><a href="../../shop-details/{{  query_data_list[0][0].id }}">{{  query_data_list[0][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -170,7 +170,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{price1 }}</p>
+                                                <p>${{query_data_list[0][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch discount">25%</span>
-                                                <a href="../shop-details/{{ product_id2 }}"><img src="{{pic_url2}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[1][0].id }}"><img src="{{  query_data_list[1][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -188,7 +188,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id2 }}">{{ name2 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[1][0].id }}">{{  query_data_list[1][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -197,7 +197,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{price2 }}</p>
+                                                <p>${{ query_data_list[1][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch discount">25%</span>
-                                                <a href="../shop-details/{{ product_id3 }}"><img src="{{pic_url3}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[2][0].id }}"><img src="{{  query_data_list[2][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -215,7 +215,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id3}}">{{ name3 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[2][0].id }}">{{  query_data_list[2][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -224,7 +224,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{price3 }}</p>
+                                                <p>${{  query_data_list[2][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id4 }}"><img src="{{pic_url4}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[3][0].id }}"><img src="{{  query_data_list[3][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -242,7 +242,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id4 }}">{{ name4 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[3][0].id }}">{{  query_data_list[3][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -251,7 +251,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{price4 }}</p>
+                                                <p>${{  query_data_list[3][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -259,7 +259,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch discount">25%</span>
-                                                <a href="../shop-details/{{ product_id5 }}"><img src="{{pic_url5}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[4][0].id }}"><img src="{{  query_data_list[4][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -269,7 +269,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id5 }}">{{ name5 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[4][0].id }}">{{  query_data_list[4][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -278,7 +278,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{price5 }}</p>
+                                                <p>${{  query_data_list[4][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +286,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id6 }}"><img src="{{pic_url6}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[5][0].id }}"><img src="{{  query_data_list[5][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -296,7 +296,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id6 }}">{{ name6 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[5][0].id }}">{{  query_data_list[5][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -305,7 +305,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price6 }}</p>
+                                                <p>${{  query_data_list[5][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -313,7 +313,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id7 }}"><img src="{{pic_url7}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[6][0].id }}"><img src="{{  query_data_list[6][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -323,7 +323,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id7 }}">{{ name7 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[6][0].id }}">{{  query_data_list[6][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -332,7 +332,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price7 }}</p>
+                                                <p>${{  query_data_list[6][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -340,7 +340,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id8 }}"><img src="{{pic_url8}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[7][0].id }}"><img src="{{  query_data_list[7][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -350,7 +350,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id8 }}">{{ name8 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[7][0].id }}">{{  query_data_list[7][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -359,7 +359,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price8 }}</p>
+                                                <p>${{  query_data_list[7][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -367,7 +367,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id9 }}"><img src="{{pic_url9}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[8][0].id }}"><img src="{{  query_data_list[8][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -377,7 +377,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id9 }}">{{ name9 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[8][0].id }}">{{  query_data_list[8][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -386,7 +386,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price9 }}</p>
+                                                <p>${{  query_data_list[8][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -394,7 +394,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id10 }}"><img src="{{pic_url10}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[9][0].id }}"><img src="{{  query_data_list[9][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -404,7 +404,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id10 }}">{{ name10 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[9][0].id }}">{{  query_data_list[9][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -413,7 +413,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price10 }}</p>
+                                                <p>${{  query_data_list[9][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -421,7 +421,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id11 }}"><img src="{{pic_url11}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[10][0].id }}"><img src="{{  query_data_list[10][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -431,7 +431,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id11 }}">{{ name11 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[10][0].id }}">{{  query_data_list[10][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -440,7 +440,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price11 }}</p>
+                                                <p>${{  query_data_list[10][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -448,7 +448,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
-                                                <a href="../shop-details/{{ product_id12 }}"><img src="{{pic_url12}}" alt=""></a>
+                                                <a href="../shop-details/{{  query_data_list[11][0].id }}"><img src="{{  query_data_list[11][0].product_pic_url }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -458,7 +458,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
-                                                <h6 class="title"><a href="../shop-details/{{ product_id12 }}">{{ name12 }}</a></h6>
+                                                <h6 class="title"><a href="../shop-details/{{  query_data_list[11][0].id }}">{{  query_data_list[11][0].product_name }}</a></h6>
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">
@@ -467,7 +467,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <p>${{ price12 }}</p>
+                                                <p>${{  query_data_list[11][1].price }}</p>
                                             </div>
                                         </div>
                                     </div>
