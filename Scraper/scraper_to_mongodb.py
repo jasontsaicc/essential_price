@@ -3,11 +3,9 @@ from pymongo import MongoClient
 import datetime
 
 
-client = MongoClient(host="localhost", port=27017)
-db = client.admin
-collection = db['test']
-# client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
-# db = client.All_Market
+
+client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
+db = client.All_Market
 
 # test data
 # product = [{'Category': 'rice_oil_powder', 'Date': '2022-08-24', 'Market': 'pxgo',  'Price': '89', 
