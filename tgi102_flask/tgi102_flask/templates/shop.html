@@ -340,7 +340,11 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
                                                 <span class="batch">New</span>
+                                                {% if query_data_list[7] %}
                                                 <a href="../shop-details/{{  query_data_list[7][0].id }}"><img src="{{  query_data_list[7][0].product_pic_url }}" alt=""></a>
+                                                {% else %}
+                                                <a href="../shop-details/"><img src="" alt=""></a>
+                                                {% endif %}
                                             </div>
                                             <div class="sp-product-content">
                                                 <div class="rating">
@@ -350,7 +354,11 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                 </div>
+                                                {% if query_data_list[7] %}
                                                 <h6 class="title"><a href="../shop-details/{{  query_data_list[7][0].id }}">{{  query_data_list[7][0].product_name }}</a></h6>
+                                                {% else %}
+                                                <a href="../shop-details/"><img src="" alt=""></a>
+                                                {% endif %}
                                                 <span class="product-status">IN Stock</span>
                                                 <div class="sp-cart-wrap">
                                                     <form action="#">

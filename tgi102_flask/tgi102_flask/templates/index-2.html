@@ -556,10 +556,10 @@
                                 <div class="sp--product--thumb">
                                     <span class="batch">-20 %</span>
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product1_id }}"><img src="{{ pic_url1 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[0][0].id }}"><img src="{{  query_data_list[0][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product1_id }}">{{ name1 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[0][0].id }}">{{  query_data_list[0][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -567,7 +567,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price1 }}</div>
+                                    <div class="price">${{  query_data_list[0][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -575,10 +575,10 @@
                             <div class="sp--product--item mb-50">
                                 <div class="sp--product--thumb">
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product2_id }}"><img src="{{ pic_url2 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[1][0].id }}"><img src="{{  query_data_list[1][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details{{ Product2_id }}">{{ name2 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details{{  query_data_list[1][0].id }}">{{  query_data_list[1][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -586,7 +586,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price2 }}</div>
+                                    <div class="price">${{  query_data_list[1][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -594,10 +594,10 @@
                             <div class="sp--product--item mb-50">
                                 <div class="sp--product--thumb">
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product3_id }}"><img src="{{ pic_url3 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[2][0].id }}"><img src="{{  query_data_list[2][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product3_id }}">{{ name3}}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[2][0].id }}">{{  query_data_list[2][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -605,7 +605,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price3 }}</div>
+                                    <div class="price">${{  query_data_list[2][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -614,10 +614,10 @@
                                 <div class="sp--product--thumb">
                                     <span class="batch new">New</span>
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product4_id }}"><img src="{{ pic_url4 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[3][0].id }}"><img src="{{  query_data_list[3][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product4_id }}">{{ name4 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[3][0].id }}">{{  query_data_list[3][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -625,7 +625,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price4 }}</div>
+                                    <div class="price">${{  query_data_list[3][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -633,10 +633,10 @@
                             <div class="sp--product--item mb-50">
                                 <div class="sp--product--thumb">
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product5_id }}"><img src="{{ pic_url5 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[4][0].id }}"><img src="{{  query_data_list[4][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product5_id }}">{{ name5 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[4][0].id }}">{{  query_data_list[4][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -644,7 +644,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price5 }}</div>
+                                    <div class="price">${{  query_data_list[4][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -652,10 +652,10 @@
                             <div class="sp--product--item mb-50">
                                 <div class="sp--product--thumb">
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product6_id }}"><img src="{{ pic_url6 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[5][0].id }}"><img src="{{  query_data_list[5][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product6_id }}">{{ name6 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[5][0].id }}">{{  query_data_list[5][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -663,7 +663,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{price6}}</div>
+                                    <div class="price">${{  query_data_list[5][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -672,10 +672,10 @@
                                 <div class="sp--product--thumb">
                                     <span class="batch new">New</span>
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product7_id }}"><img src="{{ pic_url7 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[6][0].id }}"><img src="{{  query_data_list[6][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product7_id }}">{{ name7 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[6][0].id }}">{{  query_data_list[6][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -683,7 +683,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price7 }}</div>
+                                    <div class="price">${{  query_data_list[6][1].price }}</div>
                                 </div>
                             </div>
                         </div>
@@ -691,10 +691,10 @@
                             <div class="sp--product--item mb-50">
                                 <div class="sp--product--thumb">
                                     <a href="cart.html" class="wishlist"><i class="flaticon-heart-shape-outline"></i></a>
-                                    <a href="shop-details/{{ Product8_id }}"><img src="{{ pic_url8 }}" alt=""></a>
+                                    <a href="shop-details/{{  query_data_list[7][0].id }}"><img src="{{  query_data_list[7][0].product_pic_url }}" alt=""></a>
                                 </div>
                                 <div class="sp--product--content">
-                                    <h6 class="title"><a href="shop-details/{{ Product8_id }}">{{ name8 }}</a></h6>
+                                    <h6 class="title"><a href="shop-details/{{  query_data_list[7][0].id }}">{{  query_data_list[7][0].product_name }}</a></h6>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -702,7 +702,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="price">${{ price8 }}</div>
+                                    <div class="price">${{  query_data_list[7][1].price }}</div>
                                 </div>
                             </div>
                         </div>

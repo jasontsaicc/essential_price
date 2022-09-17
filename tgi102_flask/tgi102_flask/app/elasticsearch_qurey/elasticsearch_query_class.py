@@ -9,6 +9,8 @@ class elasticsearch():
 
     def search(self, query, count: int = 30):
         body = {
+            "from": 0,
+            "size": 12,
             "query": {
                 "multi_match": {
                     "query": query,
