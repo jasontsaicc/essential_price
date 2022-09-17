@@ -17,6 +17,7 @@ db = client.All_Market
 url = None
 # 這裡可以設定要不要跑出瀏覽器出來 True 不顯示 False 顯示
 options = Options()
+options.add_argument("--no-sandbox")
 options.headless = True
 # 不加載圖片,加快訪問速度
 options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
