@@ -6,12 +6,24 @@ import pymongo
 from pymongo import MongoClient
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import datetime
 
 client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
 db = client.All_Market
 
 # pxmart scraper
+url = None
+# 這裡可以設定要不要跑出瀏覽器出來 True 不顯示 False 顯示
+options = Options()
+options.headless = True
+# 不加載圖片,加快訪問速度
+options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
+# 此步驟很重要，設置為開發者模式，防止被各大網站識別出來使用了Selenium
+options.add_experimental_option('excludeSwitches', ['enable-automation'])
+# 使用Chrome瀏覽器 後面會換成
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 px = p.Pxmart()
 dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks": [244, 248, 250], 
                     "rice_oil_powder": [729, 246, 247, 249], "make_up": [252, 528], "baby": [441], 
@@ -21,6 +33,7 @@ for category_key, category_values in dict_px_category.items():
     for category_value in category_values:
         px_data = px.get_content(category_key, category_value)
         m.pxmart(px_data)
+driver.close()
 
         
 # rt-mart scraper
