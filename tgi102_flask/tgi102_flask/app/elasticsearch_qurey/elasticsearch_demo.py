@@ -1,7 +1,4 @@
-
-import pymysql
 import mysql.connector
-
 from elasticsearch import Elasticsearch
 
 
@@ -33,16 +30,16 @@ def create_es_data():
         print("row[2]", row[2]),
         print("row[3]", row[3]),
         print("row[6]", row[6]),
-        body={
-            "id" : row[0],
-            "product_name" : row[1],
-            "product_url" : row[2],
-            "pic_url" : row[3],
-            "price" : row[6]
+        body = {
+            "id": row[0],
+            "product_name": row[1],
+            "product_url": row[2],
+            "pic_url": row[3],
+            "price": row[6]
         }
         # print("message", body)
         es.index(index="essential", body=body)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     create_es_data()

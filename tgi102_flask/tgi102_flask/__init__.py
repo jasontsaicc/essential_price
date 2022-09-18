@@ -8,9 +8,8 @@ from flask import request, render_template, redirect, url_for
 from flask_paginate import Pagination, get_page_parameter
 from flask_msearch import Search
 
-
-
 db = SQLAlchemy()
+
 
 def create_app():
     app = Flask(__name__)
@@ -19,26 +18,20 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = "tgi102_flask/static/upload/"
     app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 
-
     db.init_app(app)
     search = Search()
     search.init_app(app)
     search.create_index()
 
-
     return app
 
 
-# app = Flask(__name__)
 app = create_app()
-
 app.app_context().push()
-
 
 # from tgi102_flask.config import Config
 BASE = declarative_base()
 # db.init_app(app)
 
 Session = sessionmaker(bind=db.engine)
-
 session = Session()

@@ -1,25 +1,20 @@
+
+from tgi102_flask import app, render_template, request, get_page_parameter, Pagination, redirect, url_for
+from tgi102_flask.model import get_index_data, get_count_category, get_category_product, get_shop_details
 from tgi102_flask.app.elasticsearch_qurey.elasticsearch_query_class import elasticsearch
-from tgi102_flask import app, db, render_template, request, get_page_parameter, Pagination, session, redirect, url_for
-from tgi102_flask.model import Product, Price, Category, Mart
-from tgi102_flask.app.ai_model.md_test import milk_model
 
 
 @app.route('/index')
 @app.route('/')
 def index():
-
-    index_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id).order_by(db.func.rand()).limit(8)
-    query_data_list = []
-    for i in index_sql:
-        query_data_list.append(i)
-
-    print("query_data_list", query_data_list)
-    return render_template('index-2.html', query_data_list=query_data_list)
+    index_data = get_index_data()
+    print("query_data_list", index_data)
+    return render_template('index-2.html', query_data_list=index_data)
 
 
-@app.route('/shop/<Category_id>')
-def category(Category_id):  # put application's code here
-    search = False
+@app.route('/shop/<category_id>')
+def category(category_id):  # put application's code here
+    pagination_search = False
     q = request.args.get('page', 1)
     int_page = int(q)
     end = (int_page - 1) * 12
@@ -27,67 +22,27 @@ def category(Category_id):  # put application's code here
     #     search = True
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
+    count_category = get_count_category(category_id)
+    pagination = Pagination(page=page, per_page=12, total=count_category, search=pagination_search)
 
-    count_category_sql = db.session.query(db.func.count(Product.id)).filter(Product.id == Price.product_id).filter(Product.category_id == Category_id).all()[0][0]
-    print(count_category_sql)
+    category_product_data = get_category_product(category_id, end)
 
-    pagination = Pagination(page=page, per_page=12, total=count_category_sql, search=search)
-
-    category_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id).filter(Product.category_id == Category_id).order_by(db.func.rand()).limit(12).offset(end)
-    query_data_list = []
-
-    for i in category_sql:
-        query_data_list.append(i)
-    print("query_data_list",  query_data_list)
-
-    return render_template('shop.html', page=page, pagination=pagination,  Category_id=Category_id, query_data_list=query_data_list)
+    return render_template('shop.html', page=page, pagination=pagination, Category_id=category_id,
+                           query_data_list=category_product_data)
 
 
 @app.route('/shop-details/<product_id_query>')
 def shop_details(product_id_query):  # put application's code here
-    print("product_id_query", product_id_query)
-    details_product_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id).filter(Product.id == {product_id_query}).first()
-    print("details_product_sql", details_product_sql)
-    query_data_list = []
-    for i in details_product_sql:
-        query_data_list.append(i)
-    print("query_data_list", query_data_list)
 
-    details_Product_id = query_data_list[0].id
-    details_name = query_data_list[0].product_name
-    details_pic_url = query_data_list[0].product_pic_url
-    details_price = query_data_list[1].price
-    details_category_id = query_data_list[0].category_id
-    details_date = query_data_list[1].date
-    details_product_url = query_data_list[0].product_url
-    print("query_data_list[0]", query_data_list[0])
-    print("query_data_list[1]", query_data_list[1])
+    shop_details_data = get_shop_details(product_id_query)
 
-    return render_template('shop-details.html', details_Product_id=details_Product_id, details_name=details_name, details_pic_url=details_pic_url, details_price=details_price, details_category_id=details_category_id, details_date=details_date, details_product_url=details_product_url)
+    return render_template('shop-details.html', query_data_list=shop_details_data)
 
 
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html', error=error)
 
-
-# @app.route('/update-pic', methods=["GET", "POST"])
-# def uploadprocess():
-#     print('upload post')
-#     if 'input-id' not in request.files:
-#         return jsonify({"errno": 100, "errmsg": "無檔案"})
-#     if request.method == 'POST':
-#         files = request.files.getlist('input-id')
-#
-#         for file in files:
-#             filename = file.filename
-#             print("file", file)
-#             print("filename", filename)
-#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-#             print(jsonify({"errno": 0, "errmsg": "上傳成功"}))
-#
-#         return jsonify({"errno": 0, "errmsg": "上傳成"})
-#     return render_template('blog-details.html')
 
 @app.route('/upload_search', methods=['GET', 'POST'])
 def upload_file():
@@ -114,7 +69,6 @@ def upload_file():
         # milk_model(photo_imdecode)
         result = milk_model(photo_imdecode)
 
-
         return redirect(url_for('uploaded_file', filename=result))
     return render_template('upload_search.html')
 
@@ -127,7 +81,6 @@ def uploaded_file(filename):
 @app.route('/search', methods=['get', 'POST'])
 def search():
     if request.method == 'POST':
-        # 取出keyword
         keyword = request.form['keyword']
         print("keyword", keyword)
         return redirect(url_for("search_results", query=keyword))
@@ -159,12 +112,9 @@ def search_results(query):
     page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=12, total=total, search=search)
 
-    # new_data = json.dumps(address_list)
-    # # print("new_data", new_data)
-    # return app.response_class(new_data, content_type='application/json')
-
-    return render_template('search_results.html', page=page, pagination=pagination, query=query, return_list=address_list)
+    return render_template('search_results.html', page=page, pagination=pagination, query=query,
+                           return_list=address_list)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
