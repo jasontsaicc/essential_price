@@ -34,7 +34,9 @@ class main:
         # 此步驟很重要，設置為開發者模式，防止被各大網站識別出來使用了Selenium
         self.options.add_experimental_option('excludeSwitches', ['enable-automation'])
         # 使用Chrome瀏覽器 後面會換成
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=self.options)
+#         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=self.options)
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+
     def get_ALLproduction(self, category, num_production):
 
         # url_list = ["https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#",  # 生鮮食品
