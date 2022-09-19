@@ -22,8 +22,8 @@ class main:
 #         self.driver = webdriver.Chrome(options=self.option)
 # #         self.driver = webdriver.Chrome()
     # 使用del 讓程式結束的時候關閉瀏覽器
-    # def __del__(self):
-    #     self.driver.close()
+    def __del__(self):
+        self.driver.close()
     def __init__(self):
         self.url = None
         # 這裡可以設定要不要跑出瀏覽器出來 True 不顯示 False 顯示
