@@ -41,6 +41,8 @@ services:
   web:
     build:
       context: .
+    restart: always
+    container_name: web_flask
     ports:
       - "8000:8000"
 
