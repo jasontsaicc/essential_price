@@ -128,11 +128,11 @@ dic_carrefour_category = {'fresh_food': 'https://online.carrefour.com.tw/zh/%E7%
                           }
 ca = c.main()
 option = Options()
-option.add_argument('headless')  # 啟動無頭模式
-option.add_argument('disable-gpu')  # windows必須加入此行
-driver = webdriver.Chrome(options=option)
+# option.add_argument('headless')  # 啟動無頭模式
+# option.add_argument('disable-gpu')  # windows必須加入此行
+# driver = webdriver.Chrome(options=option)
 for category in dic_carrefour_category:
     num_production = dic_carrefour_category[category]
     ca_data = ca.get_ALLproduction(category, num_production)
     m.carr(ca_data)
-driver.close()
+# driver.close()
