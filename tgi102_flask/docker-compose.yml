@@ -37,3 +37,17 @@ services:
       - elasticsearch
     ports:
       - "5601:5601"
+      -
+  web:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - web
