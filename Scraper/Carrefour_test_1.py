@@ -47,6 +47,7 @@ class main:
         while True:
             try:
                 for e in (1, 200):  # 跑幾頁
+                    self.driver = webdriver.Chrome("C:\Users\User\AppData\Local\Programs\Python\Python310")
                     self.driver.get(num_production.format(num))
                     self.driver.implicitly_wait(0.5)
                     self.soup = BeautifulSoup(self.driver.page_source, 'html.parser')
