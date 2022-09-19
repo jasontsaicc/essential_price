@@ -22,12 +22,13 @@ def create_app():
     search = Search()
     search.init_app(app)
     search.create_index()
+    app.app_context().push()
 
     return app
 
 
 app = create_app()
-app.app_context().push()
+# app.app_context().push()
 
 # from tgi102_flask.config import Config
 BASE = declarative_base()
