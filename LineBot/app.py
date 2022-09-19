@@ -266,8 +266,8 @@ def imgPredict(img_name):
             5: '瑞穗全脂鮮奶', 6: '瑞穗全脂鮮奶', 7: '瑞穗低脂鮮奶', 8: '瑞穗低脂鮮奶'}
     out = np.argmax(pred, axis=1)
     for i in brand:
-        if out == brand[i]:
-            pd_name = i
+        if out == i:
+            pd_name = brand[i]
             return confirmSearch(pd_name)
 
 
