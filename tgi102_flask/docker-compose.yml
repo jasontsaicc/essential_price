@@ -26,7 +26,7 @@ services:
 #      - esnet
 
   kibana:
-    image: 0fe3a8e1ad61
+    image: docker.elastic.co/kibana/kibana-oss:7.10.2
     container_name: kibana-710
     environment:
       SERVER_NAME: kibana-server
