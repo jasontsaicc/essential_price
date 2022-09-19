@@ -12,7 +12,7 @@ import datetime
 
 client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
 db = client.All_Market
-
+# scraper
 # pxmart scraper
 url = None
 # 這裡可以設定要不要跑出瀏覽器出來 True 不顯示 False 顯示
