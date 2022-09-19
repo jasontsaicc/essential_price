@@ -8,7 +8,7 @@ COPY . /tgi102_flask
 
 WORKDIR /tgi102_flask
 
-RUN pip install -r requirements.txt && pip install gunicorn&&chmod 755 run_server.sh
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt && pip3 install gunicorn&&chmod 755 run_server.sh
 
 EXPOSE 8000
 
