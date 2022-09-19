@@ -23,6 +23,7 @@ def create_app():
     # search.create_index()
     app.app_context().push()
 
+
     return app
 
 
@@ -31,7 +32,7 @@ app = create_app()
 
 # from tgi102_flask.config import Config
 BASE = declarative_base()
-# db.init_app(app)
-
+# # db.init_app(app)
+#
 Session = sessionmaker(bind=db.engine)
 session = Session()
