@@ -35,7 +35,7 @@ class main:
         self.options.add_experimental_option('excludeSwitches', ['enable-automation'])
         # 使用Chrome瀏覽器 後面會換成
 #         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=self.options)
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=self.options)
 
     def get_ALLproduction(self, category, num_production):
 
