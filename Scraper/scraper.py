@@ -23,7 +23,7 @@ for category_key, category_values in dict_px_category.items():
     for category_value in category_values:
         px_data = px.get_content(category_key, category_value)
         m.pxmart(px_data)
-driver.close()
+
 
         
 # rt-mart scraper
