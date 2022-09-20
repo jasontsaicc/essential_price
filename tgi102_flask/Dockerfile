@@ -1,8 +1,8 @@
-FROM python:3.10
+FROM python:3.9
 
 LABEL maintainer="Jason Tsai <jason.tsaicc@gmail.com>"
 
-RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev
+RUN #apk add --no-cache gcc musl-dev libffi-dev openssl-dev
 
 COPY . /tgi102_flask
 
