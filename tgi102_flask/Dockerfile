@@ -1,10 +1,10 @@
-FROM python:3.10-alpine
+FROM python:3.10
 
 LABEL maintainer="Jason Tsai <jason.tsaicc@gmail.com>"
 
 RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev
 
-COPY . .
+COPY . /tgi102_flask
 
 WORKDIR /tgi102_flask
 

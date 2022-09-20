@@ -1,1 +1,1 @@
-gunicorn -c gun.conf wsgi:app
+gunicorn -c gun.conf app:app
