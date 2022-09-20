@@ -1,3 +1,3 @@
 #! /bin/bash
 
-gunicorn -c gun.conf app:app
+gunicorn -c gun.py app:app
