@@ -46,7 +46,6 @@ def upload_file():
 def uploaded_file(filename):
     return render_template('result.html', filename=filename)
 
-
 def predict(img_array):
     
     img = img_array

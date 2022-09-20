@@ -3,6 +3,11 @@ from tgi102_flask import app, render_template, request, get_page_parameter, Pagi
 from tgi102_flask.model import get_index_data, get_count_category, get_category_product, get_shop_details
 from tgi102_flask.app.elasticsearch_qurey.elasticsearch_query_class import elasticsearch
 
+import numpy as np
+import tempfile
+import cv2
+import tensorflow as tf
+
 
 @app.route('/index')
 @app.route('/')
@@ -66,16 +71,48 @@ def upload_file():
         photo_fromstring = np.fromstring(photo, np.uint8)
         print("photo_fromstring", photo_fromstring)
         photo_imdecode = cv2.imdecode(photo_fromstring, cv2.IMREAD_COLOR)[:, :, ::-1]
-        # milk_model(photo_imdecode)
-        result = milk_model(photo_imdecode)
+        # result = milk_model(photo_imdecode)
 
-        return redirect(url_for('uploaded_file', filename=result))
+        img_resize = cv2.resize(photo_imdecode, (224, 224))
+        img_astype = img_resize.astype(np.float32)
+        img_array = []
+        img_array.append(img_astype)
+        img_asarray = np.asarray(img_array)
+        result = predict(img_array)
+        print(result)
+
+
+        return redirect(url_for('search_results', query=result))
     return render_template('upload_search.html')
 
 
 @app.route('/search_photo/<filename>')
 def uploaded_file(filename):
     return render_template('result_2.html', filename=filename)
+
+
+def predict(img_array):
+    img = img_array
+    model_pred = tf.lite.Interpreter('./tflite_model.tflite')
+    model_pred.allocate_tensors()
+    input_index = model_pred.get_input_details()[0]["index"]
+    output_index = model_pred.get_output_details()[0]["index"]
+
+    model_pred.set_tensor(input_index, img)
+    model_pred.invoke()
+
+    output_data = model_pred.get_tensor(output_index)
+    print(output_data)
+    x = np.argmax(output_data)
+
+    brand = {0: '義美全脂鮮乳', 1: '林鳳營全脂鮮乳', 2: '乳香世家鮮乳', 3: '福樂一番鮮特極鮮乳', 4: '光泉鮮乳',
+             5: '瑞穗全脂鮮奶', 6: '瑞穗全脂鮮奶', 7: '瑞穗低脂鮮奶', 8: '瑞穗低脂鮮奶'}
+
+    for i in brand:
+        if i == x:
+            pd_name = brand[i]
+            print("Prediction:", pd_name)
+    return pd_name
 
 
 @app.route('/search', methods=['get', 'POST'])
@@ -89,7 +126,7 @@ def search():
 
 
 @app.route('/search_results/<query>')
-def search_results(query):
+def search_results(query, result_name=None):
     es = elasticsearch(index_name="essential", index_type='_doc')
     data = es.search(query)
 
@@ -113,8 +150,8 @@ def search_results(query):
     pagination = Pagination(page=page, per_page=12, total=total, search=search)
 
     return render_template('search_results.html', page=page, pagination=pagination, query=query,
-                           return_list=address_list)
+                           return_list=address_list, result_name=result_name)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=5001)
