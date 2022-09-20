@@ -5,7 +5,7 @@
 *.iml
 *.name
 *.h5
-static/upload/*
+static/upload/
 tgi102_flask/tgi102_flask/static/upload/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
