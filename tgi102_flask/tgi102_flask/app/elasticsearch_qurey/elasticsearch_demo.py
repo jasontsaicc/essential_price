@@ -1,6 +1,10 @@
-# import mysql.connector
+import sys
 from elasticsearch import Elasticsearch
-from tgi102_flask import db, session
+
+sys.path.append('/-essential_price/tgi102_flask')
+
+from tgi102_flask import db
+print(sys.path)
 
 def get_data():
     # config = {
@@ -25,18 +29,18 @@ def create_es_data():
     es = Elasticsearch(hosts='0.0.0.0', port=9200)
     results = get_data()
     for row in results:
-        # print("row", row)
+        print("row", row)
         print("row[0]", row[0]),
         print("row[1]", row[1]),
         print("row[2]", row[2]),
         print("row[3]", row[3]),
-        print("row[6]", row[6]),
+        print("row[8]", row[8]),
         body = {
             "id": row[0],
             "product_name": row[1],
             "product_url": row[2],
             "pic_url": row[3],
-            "price": row[6]
+            "price": row[8]
         }
         # print("message", body)
         es.index(index="essential", body=body)

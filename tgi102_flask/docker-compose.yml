@@ -20,6 +20,8 @@ services:
       memlock:
         soft: -1
         hard: -1
+    links:
+      - web
 #    volumes:
 #      - es_data:/usr/share/elasticsearch/data
 #    networks:
@@ -37,7 +39,9 @@ services:
       - elasticsearch
     ports:
       - "5601:5601"
-#      -
+    links:
+      - web
+
   web:
     build:
       context: .
