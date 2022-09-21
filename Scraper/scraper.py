@@ -26,6 +26,27 @@ for category_key, category_values in dict_px_category.items():
 
 
         
+# carrefour scraper
+dic_carrefour_category = {'fresh_food': 'https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#',
+                          'frozen_food': 'https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#',
+                          'drink_snacks': 'https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#',
+                          'rice_oil_powder': 'https://online.carrefour.com.tw/zh/%E7%B1%B3%E6%B2%B9%E6%B2%96%E6%B3%A1?start={}#',
+                          'make_up': 'https://online.carrefour.com.tw/zh/%E7%BE%8E%E5%A6%9D%E8%AD%B7%E7%90%86?start={}#',
+                          'baby': 'https://online.carrefour.com.tw/zh/%E6%AF%8D%E5%AC%B0%E4%BF%9D%E5%81%A5?start={}#',
+                          'life_style': 'https://online.carrefour.com.tw/zh/%E7%94%9F%E6%B4%BB%E4%BC%91%E9%96%92?start={}#',
+                          'daily_use': 'https://online.carrefour.com.tw/zh/%E6%97%A5%E7%94%A8%E7%99%BE%E8%B2%A8?start={}#',
+                          'furniture': 'https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#',
+                          'clothing': 'https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#',
+                          'electrical': 'https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#',
+                          '3C': 'https://online.carrefour.com.tw/zh/3c?start={}#',
+                          }
+ca = c.main()
+for category in dic_carrefour_category:
+    num_production = dic_carrefour_category[category]
+    ca_data = ca.get_ALLproduction(category, num_production)
+    m.carr(ca_data)        
+        
+        
 # rt-mart scraper
 product_id = {
     "drink_snacks":[3793,3794,4051,4052,4053,4058,127808,127983,3742,130048],
@@ -99,25 +120,3 @@ for ff in product_type:
                 for v in pi[k]:
                     rt_ff_data = r.RT_Mart_ff(ff=ff,k=k,v=v,store=store)
                     m.rtmart(rt_ff_data)
-
-
-# carrefour scraper
-dic_carrefour_category = {'fresh_food': 'https://online.carrefour.com.tw/zh/%E7%94%9F%E9%AE%AE%E9%A3%9F%E5%93%81?start={}#',
-                          'frozen_food': 'https://online.carrefour.com.tw/zh/%E5%86%B7%E5%87%8D%E9%A3%9F%E5%93%81?start={}#',
-                          'drink_snacks': 'https://online.carrefour.com.tw/zh/%E9%A3%B2%E6%96%99%E9%9B%B6%E9%A3%9F?start={}#',
-                          'rice_oil_powder': 'https://online.carrefour.com.tw/zh/%E7%B1%B3%E6%B2%B9%E6%B2%96%E6%B3%A1?start={}#',
-                          'make_up': 'https://online.carrefour.com.tw/zh/%E7%BE%8E%E5%A6%9D%E8%AD%B7%E7%90%86?start={}#',
-                          'baby': 'https://online.carrefour.com.tw/zh/%E6%AF%8D%E5%AC%B0%E4%BF%9D%E5%81%A5?start={}#',
-                          'life_style': 'https://online.carrefour.com.tw/zh/%E7%94%9F%E6%B4%BB%E4%BC%91%E9%96%92?start={}#',
-                          'daily_use': 'https://online.carrefour.com.tw/zh/%E6%97%A5%E7%94%A8%E7%99%BE%E8%B2%A8?start={}#',
-                          'furniture': 'https://online.carrefour.com.tw/zh/%E5%82%A2%E4%BF%B1%E5%AF%A2%E9%A3%BE?start={}#',
-                          'clothing': 'https://online.carrefour.com.tw/zh/%E6%9C%8D%E9%A3%BE%E9%9E%8B%E5%8C%85?start={}#',
-                          'electrical': 'https://online.carrefour.com.tw/zh/%E5%A4%A7%E5%B0%8F%E5%AE%B6%E9%9B%BB?start={}#',
-                          '3C': 'https://online.carrefour.com.tw/zh/3c?start={}#',
-                          }
-ca = c.main()
-for category in dic_carrefour_category:
-    num_production = dic_carrefour_category[category]
-    ca_data = ca.get_ALLproduction(category, num_production)
-    m.carr(ca_data)
-
