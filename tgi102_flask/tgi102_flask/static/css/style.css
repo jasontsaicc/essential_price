@@ -1308,7 +1308,7 @@ label {
 5. Breadcrumb
 ========================================================================*/
 .breadcrumb-bg {
-    background-image: url(../img/bg/breadcrumb_bg.jpg);
+    background-image: url(../img/bg/breadcrumb_bg.png);
     background-position: center;
     background-size: cover;
     padding: 125px 0 125px;
@@ -1355,7 +1355,7 @@ label {
     color: #fff;
 }
 .breadcrumb-bg-two {
-    background-image: url(../img/bg/breadcrumb_bg02.jpg);
+    background-image: url(../img/bg/breadcrumb_bg02.png);
     background-position: center;
     background-size: cover;
     padding: 26px 0;
@@ -2272,7 +2272,7 @@ label {
 11. Coupon-code
 ========================================================================*/
 .coupon-bg {
-    background-image: url(../img/bg/coupon_banner_bg.jpg);
+    background-image: url(../img/bg/coupon_banner_bg.png);
     background-position: center;
     background-size: cover;
     display: flex;
@@ -2351,7 +2351,7 @@ label {
 13. Get-discount
 ========================================================================*/
 .discount-time-bg {
-    background-image: url(../img/bg/discount_count_bg.jpg);
+    background-image: url(../img/bg/discount_count_bg.png);
     background-position: center;
     background-size: cover;
     padding: 80px 80px;
@@ -2485,7 +2485,7 @@ label {
 15. App-download
 ========================================================================*/
 .ganic-app-wrap {
-    background-image: url(../img/bg/app_download_bg.jpg);
+    background-image: url(../img/bg/app_download_bg.png);
     background-position: center;
     background-size: cover;
     border-radius: 6px;
@@ -2574,7 +2574,7 @@ label {
     position: absolute;
     right: 0;
     bottom: 0;
-    background-image: url(../img/images/active_year.jpg);
+    background-image: url(../img/images/active_year.png);
     padding: 41px 35px;
     background-position: center;
     background-size: cover;
@@ -2709,7 +2709,7 @@ label {
 17. Services
 ========================================================================*/
 .services-bg {
-    background-image: url(../img/bg/services_bg.jpg);
+    background-image: url(../img/bg/services_bg.png);
     background-position: center;
     background-size: cover;
     padding: 85px 0 60px;
@@ -3167,7 +3167,7 @@ label {
     max-width: 100%;
 }
 .shop-discount-area {
-    background-image: url(../img/bg/shop_discount_bg.jpg);
+    background-image: url(../img/bg/shop_discount_bg.png);
     background-position: center;
     background-size: cover;
     padding: 45px 100px 40px;
