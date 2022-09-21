@@ -13,6 +13,7 @@ import tensorflow as tf
 def index():
     index_data = get_index_data()
     print("query_data_list", index_data)
+
     return render_template('index-2.html', query_data_list=index_data)
 
 

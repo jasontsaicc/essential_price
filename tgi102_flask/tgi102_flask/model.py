@@ -57,11 +57,15 @@ class Product(BASE):
 
 
 def get_index_data():
-    index_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id).order_by(db.func.rand()).limit(
+
+    index_sql = db.session.query(Product, Price).filter(Product.id == Price.product_id and Product.mart_id).order_by(db.func.rand()).limit(
         8)
     index_data_list = []
     for i in index_sql:
         index_data_list.append(i)
+    print(index_data_list[0][0].mart_id)
+
+
     return index_data_list
 
 

@@ -2,15 +2,17 @@ FROM python:3.9
 
 LABEL maintainer="Jason Tsai <jason.tsaicc@gmail.com>"
 
-#RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev
 
-COPY . /tgi102_flask
+RUN git clone https://github.com/EssentialTeam/-essential_price.git -b feature/flask
 
-WORKDIR /tgi102_flask
-
-RUN pip3 install --upgrade pip && pip3 install gunicorn  && chmod 755 ./run_server.sh
-RUN pip3 install -r requirements.txt
+WORKDIR ./-essential_price/tgi102_flask/
+RUN pip install --upgrade pip
+RUN apt-get update -y && apt-get install python3-pip -y
+RUN pip3 install gunicorn  && chmod 755 ./run_server.sh
+RUN #pip3 install -r requirements.txt
+RUN #apt-get install wget && wget https://frankwubucket.s3.us-east-2.amazonaws.com/tflite_model.tflite
+RUN #apt-get install libsm6 libxext6
 
 EXPOSE 8000
 
-ENTRYPOINT [ "./run_server.sh" ]
+#ENTRYPOINT [ "./run_server.sh" ]

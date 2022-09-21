@@ -1,3 +1,3 @@
 FROM nginx
-RUN rm /etc/nginx/conf.d/default.conf
-ADD conf.d/ /etc/nginx/conf.d
+RUN #rm /etc/nginx/sites-available/*
+ADD conf.d/ /etc/nginx/sites-available/
