@@ -10,6 +10,9 @@ import tensorflow as tf
 
 
 @app.route('/index')
+def test():
+    return render_template('index.html')
+
 @app.route('/')
 def index():
     index_data = get_index_data()
