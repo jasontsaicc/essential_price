@@ -1,27 +1,28 @@
-import mysql.connector
+# import mysql.connector
 from elasticsearch import Elasticsearch
-
+from tgi102_flask import db, session
 
 def get_data():
-    config = {
-        'host': 'projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com',
-        'user': 'admin',
-        'password': 'tgi102aaa',
-        'database': 'essential',
-    }
-    conn = mysql.connector.connect(**config)
-    print("Connection established")
-    cursor = conn.cursor()
+    # config = {
+    #     'host': 'projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com',
+    #     'user': 'admin',
+    #     'password': 'tgi102aaa',
+    #     'database': 'essential',
+    # }
+    # # conn = sa.connector.connect(**config)
+    # print("Connection established")
+    # cursor = sa.cursor()
 
     sql_cmd = f"""select * from product pd join price pr on pd.id = pr.product_id"""
-    cursor.execute(sql_cmd)
+    cursor = db.session.execute(sql_cmd)
+
     results = cursor.fetchall()
-    conn.close()
+    print(results)    # conn.close()
     return results
 
 
 def create_es_data():
-    es = Elasticsearch(hosts='127.0.0.1', port=9200)
+    es = Elasticsearch(hosts='0.0.0.0', port=9200)
     results = get_data()
     for row in results:
         # print("row", row)
