@@ -45,8 +45,10 @@ services:
     container_name: web_flask
     ports:
       - "8000:8000"
-      - "9200:9200"
-      - "5601:5601"
+#      - "9200:9200"
+#      - "5601:5601"
+    stdin_open: true
+    tty: true
 
   nginx:
     image: nginx
