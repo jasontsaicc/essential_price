@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy as sa
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from flask import request, render_template, redirect, url_for
@@ -16,6 +16,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
     app.config['UPLOAD_FOLDER'] = "tgi102_flask/static/upload/"
     app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
     db.init_app(app)
     # # search = Search()
