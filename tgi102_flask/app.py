@@ -1,4 +1,3 @@
-
 from tgi102_flask import app, render_template, request, get_page_parameter, Pagination, redirect, url_for
 from tgi102_flask.model import get_index_data, get_count_category, get_category_product, get_shop_details
 from tgi102_flask.app.elasticsearch_qurey.elasticsearch_query_class import elasticsearch
@@ -10,9 +9,6 @@ import tensorflow as tf
 
 
 @app.route('/index')
-def test():
-    return render_template('index.html')
-
 @app.route('/')
 def index():
     index_data = get_index_data()
@@ -83,7 +79,6 @@ def upload_file():
         img_asarray = np.asarray(img_array)
         result = predict(img_array)
         print(result)
-
 
         return redirect(url_for('search_results', query=result))
     return render_template('upload_search.html')
@@ -157,4 +152,4 @@ def search_results(query, result_name=None):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8000)
+    app.run(host='0.0.0.0', port=8000)
