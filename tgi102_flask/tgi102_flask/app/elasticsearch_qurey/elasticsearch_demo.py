@@ -26,7 +26,7 @@ def get_data():
 
 
 def create_es_data():
-    es = Elasticsearch(hosts='0.0.0.0', port=9200)
+    es = Elasticsearch(hosts='web', port=9200)
     results = get_data()
     for row in results:
         print("row", row)

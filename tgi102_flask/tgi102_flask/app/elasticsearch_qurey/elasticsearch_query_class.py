@@ -3,7 +3,7 @@ from elasticsearch import Elasticsearch
 
 class elasticsearch():
     def __init__(self, index_name, index_type):
-        self.es = Elasticsearch(hosts='0.0.0.0', port=9200)
+        self.es = Elasticsearch(hosts='web', port=9200)
         self.index_name = index_name
         self.index_type = index_type
 
