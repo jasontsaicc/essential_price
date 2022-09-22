@@ -30,19 +30,8 @@ def carr(data):
     collections = db.Carrefour
     collections.insert_many(data)
     date = datetime.date.today()
-    collections.update_many({'Date': f'{date}'}, {'$set':{'Market': 'C'}}, upsert=False)
-    collections.update_many(
-        {'Date': f'{date}'}, 
-        {'$rename':{
-            'Category': 'category', 
-            'Date': 'date', 
-            'Market': 'market', 
-            'Price': 'price', 
-            'Product_name': 'product_name', 
-            'PicUrl': 'photos', 
-            'Url': 'product_url'}}, 
-        upsert=False)
-
+    collections.update_many({'date': f'{date}'}, {'$set':{'Market': 'C'}}, upsert=False)
+    
 
 def pxmart(data):
     collections = db.PxMart2
