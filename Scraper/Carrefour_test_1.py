@@ -15,27 +15,15 @@ import time
 # collection = db['test']
 # print(collection)
 class main:
-#     def __init__(self):
-#         self.option = Options()
-#         self.option.add_argument('headless')  # 啟動無頭模式
-#         self.option.add_argument('disable-gpu')  # windows必須加入此行
-#         self.driver = webdriver.Chrome(options=self.option)
+    def __init__(self):
+        self.option = Options()
+        self.option.add_argument('headless')  # 啟動無頭模式
+        self.option.add_argument('disable-gpu')  # windows必須加入此行
+        self.driver = webdriver.Chrome(options=self.option)
 # #         self.driver = webdriver.Chrome()
     # 使用del 讓程式結束的時候關閉瀏覽器
     def __del__(self):
         self.driver.close()
-    def __init__(self):
-        self.url = None
-        # 這裡可以設定要不要跑出瀏覽器出來 True 不顯示 False 顯示
-        self.options = Options()
-        self.options.headless = True
-        # 不加載圖片,加快訪問速度
-        self.options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
-        # 此步驟很重要，設置為開發者模式，防止被各大網站識別出來使用了Selenium
-        self.options.add_experimental_option('excludeSwitches', ['enable-automation'])
-        # 使用Chrome瀏覽器 後面會換成
-#         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=self.options)
-        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=self.options)
 
     def get_ALLproduction(self, category, num_production):
 
@@ -79,12 +67,12 @@ class main:
                         try:
                             count = self.soup.select('div[class="box-img"] span.packageQty')[j].text  # 不是每個商品都是單一的 所以 不設try except 的話會有 IndexError
                             data = {"Category": category,
-                                    'Data': str(update),
+                                    'Date': str(update),
                                     "Market": "Carefour",
                                     "Price": price,
                                     "Product_name": name + ' ' + str(count),
-                                    "PicUrl": pic,
-                                    "Url": product_url}
+                                    "Url": product_url,
+                                    "PicUrl": pic}
                             print(data)
                             all_product.append(data)
 
