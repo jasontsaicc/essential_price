@@ -20,8 +20,8 @@ services:
       memlock:
         soft: -1
         hard: -1
-#    links:
-#      - web
+    links:
+      - web
 #    volumes:
 #      - es_data:/usr/share/elasticsearch/data
 #    networks:
@@ -40,25 +40,25 @@ services:
     ports:
       - "5601:5601"
     links:
-      - elasticsearch
+      - web
 
-#  web:
-#    build:
-#      context: .
-##    restart: always
-#    container_name: web_flask
-#    ports:
-#      - "8000:8000"
-##      - "9200:9200"
-##      - "5601:5601"
-#    stdin_open: true
-#    tty: true
-#
-#  nginx:
-#    image: nginx
+  web:
+    build:
+      context: .
 #    restart: always
-#    build: ./nginx
-#    ports:
-#      - "80:80"
-#    links:
-#      - web
+    container_name: web_flask
+    ports:
+      - "8000:8000"
+#      - "9200:9200"
+#      - "5601:5601"
+    stdin_open: true
+    tty: true
+
+  nginx:
+    image: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - web
