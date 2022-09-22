@@ -6,6 +6,7 @@ sys.path.append('/-essential_price/tgi102_flask')
 from tgi102_flask import db
 print(sys.path)
 
+
 def get_data():
     # config = {
     #     'host': 'projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com',
@@ -21,7 +22,7 @@ def get_data():
     cursor = db.session.execute(sql_cmd)
 
     results = cursor.fetchall()
-    print(results)    # conn.close()
+    print(results)
     return results
 
 
