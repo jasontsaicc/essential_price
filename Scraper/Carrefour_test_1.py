@@ -62,7 +62,7 @@ class main:
                         self.driver.implicitly_wait(0.5)
                         price = prices.strip('$')
                         self.driver.implicitly_wait(0.5)
-                        pic = self.soup.select('div[class="box-img"] a.gtm-product-alink img.m_lazyload')[j].get('src')  # 用get 取src裡面的屬性
+                        photo = self.soup.select('div[class="box-img"] a.gtm-product-alink img.m_lazyload')[j].get('src')  # 用get 取src裡面的屬性
                         product_url = 'https://online.carrefour.com.tw' + str(self.soup.select('div[class="desc-operation-wrapper"] div[class="commodity-desc"] a')[j].get('href'))
                         try:
                             count = self.soup.select('div[class="box-img"] span.packageQty')[j].text  # 不是每個商品都是單一的 所以 不設try except 的話會有 IndexError
@@ -71,8 +71,8 @@ class main:
                                     "Market": "Carefour",
                                     "Price": price,
                                     "Product_name": name + ' ' + str(count),
-                                    "Url": product_url,
-                                    "PicUrl": pic}
+                                    "PicUrl": photo,
+                                    "Url": product_url}
                             print(data)
                             all_product.append(data)
 
@@ -82,8 +82,8 @@ class main:
                                     "Market": "Carefour",
                                     "Price": price,
                                     "Product_name": names,
-                                    "Url": product_url,
-                                    "PicUrl": pic}
+                                    "PicUrl": photo,
+                                    "Url": product_url}
                             print(data)
                             all_product.append(data)
                             continue
