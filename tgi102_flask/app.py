@@ -142,7 +142,7 @@ def search_results(query, result_name=None):
     q = request.args.get('page', 1)
     int_page = int(q)
     end = (int_page - 1) * 12
-    # if q:
+    # if q:ls
     #     search = True
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
