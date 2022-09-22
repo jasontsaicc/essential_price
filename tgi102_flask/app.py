@@ -1,11 +1,11 @@
+import os
+import numpy as np
+import cv2
+import tensorflow as tf
+
 from tgi102_flask import app, render_template, request, get_page_parameter, Pagination, redirect, url_for
 from tgi102_flask.model import get_index_data, get_count_category, get_category_product, get_shop_details
 from tgi102_flask.app.elasticsearch_qurey.elasticsearch_query_class import elasticsearch
-
-import numpy as np
-import tempfile
-import cv2
-import tensorflow as tf
 
 
 @app.route('/index')
@@ -39,7 +39,6 @@ def category(category_id):
 
 @app.route('/shop-details/<product_id_query>')
 def shop_details(product_id_query):
-
     shop_details_data = get_shop_details(product_id_query)
 
     return render_template('shop-details.html', query_data_list=shop_details_data)
@@ -61,6 +60,10 @@ def upload_file():
         for file in files:
             filename = file.filename
             print("filename", filename)
+            # 判斷資料夾是否存在
+            path = 'tgi102_flask/static/upload'
+            if not os.path.isdir(path):
+                os.mkdir(path)
             # file.save(app.config['UPLOAD_FOLDER'], filename)
             file.save(f'tgi102_flask/static/upload/{filename}')
         upload_photo = f'/static/upload/{filename}'
