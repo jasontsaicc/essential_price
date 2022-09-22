@@ -18,7 +18,8 @@ def index():
 
 
 @app.route('/shop/<category_id>')
-def category(category_id):  # put application's code here
+def category(category_id):
+    # get page parameter
     pagination_search = False
     q = request.args.get('page', 1)
     int_page = int(q)
@@ -37,7 +38,7 @@ def category(category_id):  # put application's code here
 
 
 @app.route('/shop-details/<product_id_query>')
-def shop_details(product_id_query):  # put application's code here
+def shop_details(product_id_query):
 
     shop_details_data = get_shop_details(product_id_query)
 
@@ -117,6 +118,7 @@ def predict(img_array):
 @app.route('/search', methods=['get', 'POST'])
 def search():
     if request.method == 'POST':
+        # get search keyword
         keyword = request.form['keyword']
         print("keyword", keyword)
         return redirect(url_for("search_results", query=keyword))

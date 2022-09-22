@@ -13,17 +13,14 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
+    app.config[
+        'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
     app.config['UPLOAD_FOLDER'] = "tgi102_flask/static/upload/"
     app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
     db.init_app(app)
-    # # search = Search()
-    # search.init_app(app)
-    # search.create_index()
     app.app_context().push()
-
 
     return app
 
