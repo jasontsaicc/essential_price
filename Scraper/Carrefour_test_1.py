@@ -17,8 +17,8 @@ import time
 class main:
     def __init__(self):
         self.option = Options()
-        self.option.add_argument('headless')  # 啟動無頭模式
-        self.option.add_argument('disable-gpu')  # windows必須加入此行
+        self.option.add_argument('--headless')  # 啟動無頭模式
+        self.option.add_argument('--disable-gpu')  # windows必須加入此行
         self.driver = webdriver.Chrome(options=self.option)
 # #         self.driver = webdriver.Chrome()
     # 使用del 讓程式結束的時候關閉瀏覽器
