@@ -41,6 +41,8 @@ def category(category_id):
 def shop_details(product_id_query):
     shop_details_data = get_shop_details(product_id_query)
 
+
+
     return render_template('shop-details.html', query_data_list=shop_details_data)
 
 
@@ -96,7 +98,7 @@ def uploaded_file(filename):
 
 def predict(img_array):
     img = img_array
-    model_pred = tf.lite.Interpreter('./tflite_model.tflite')
+    model_pred = tf.lite.Interpreter('./tflite_ResNetV2.tflite')
     model_pred.allocate_tensors()
     input_index = model_pred.get_input_details()[0]["index"]
     output_index = model_pred.get_output_details()[0]["index"]

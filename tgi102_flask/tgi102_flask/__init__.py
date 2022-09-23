@@ -18,7 +18,6 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = "tgi102_flask/static/upload/"
     app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
-
     db.init_app(app)
     app.app_context().push()
 
