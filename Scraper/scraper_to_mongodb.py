@@ -30,7 +30,7 @@ def carr(data):
     collections = db.Carrefour
     collections.insert_many(data)
     date = datetime.date.today()
-    collections.update_many({'date': f'{date}'}, {'$set':{'Market': 'C'}}, upsert=False)
+    collections.update_many({'date': f'{date}'}, {'$set':{'market': 'C'}}, upsert=False)
     
 
 def pxmart(data):
