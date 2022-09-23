@@ -31,11 +31,11 @@ def create_es_data():
     results = get_data()
     for row in results:
         print("row", row)
-        print("row[0]", row[0]),
-        print("row[1]", row[1]),
-        print("row[2]", row[2]),
-        print("row[3]", row[3]),
-        print("row[8]", row[8]),
+        print("id", row[0]),
+        print("product_name", row[1]),
+        print("product_url", row[2]),
+        print("pic_url", row[3]),
+        print("price", row[8]),
         body = {
             "id": row[0],
             "product_name": row[1],

@@ -111,11 +111,14 @@ def predict(img_array):
     brand = {0: '義美全脂鮮乳', 1: '林鳳營全脂鮮乳', 2: '乳香世家鮮乳', 3: '福樂一番鮮特極鮮乳', 4: '光泉鮮乳',
              5: '瑞穗全脂鮮奶', 6: '瑞穗全脂鮮奶', 7: '瑞穗低脂鮮奶', 8: '瑞穗低脂鮮奶'}
 
-    for i in brand:
-        if i == x:
-            pd_name = brand[i]
-            print("Prediction:", pd_name)
-    return pd_name
+    if np.max(output_data) > 0.7:
+        for i in brand:
+            if i == x:
+                pd_name = brand[i]
+                print("Prediction:", pd_name)
+        return pd_name
+    else:
+        return "無法辨識"
 
 
 @app.route('/search', methods=['get', 'POST'])
