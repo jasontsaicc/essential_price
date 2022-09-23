@@ -65,7 +65,10 @@ def predict(img_array):
             5: '瑞穗全脂鮮奶', 6: '瑞穗全脂鮮奶', 7: '瑞穗低脂鮮奶', 8: '瑞穗低脂鮮奶'}
 
     for i in brand:
-        if i == x:
+        if np.max(output_data) < 0.5:
+            print("無法辨識")
+            break
+        elif i == x:
             pd_name = brand[i]
             print("Prediction:", pd_name)
     return pd_name
