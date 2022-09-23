@@ -58,6 +58,8 @@ services:
     image: nginx
     restart: always
     build: ./nginx
+    volumes:
+      - /home/jasontsai/-essential_price/tgi102_flask/nginx/conf.d/:/etc/nginx/conf.d/
     ports:
       - "80:80"
     links:
