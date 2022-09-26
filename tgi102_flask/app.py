@@ -1,7 +1,7 @@
 import os
 import numpy as np
-import cv2
-import tensorflow as tf
+# import cv2
+# import tensorflow as tf
 
 from tgi102_flask import app, render_template, request, get_page_parameter, Pagination, redirect, url_for
 from tgi102_flask.model import get_index_data, get_count_category, get_category_product, get_shop_details
@@ -160,6 +160,12 @@ def search_results(query, result_name=None):
 
     return render_template('search_results.html', page=page, pagination=pagination, query=query,
                            return_list=address_list, result_name=result_name)
+
+
+@app.route('/map')
+def map():
+    return render_template('map_test.html')
+
 
 
 if __name__ == '__main__':

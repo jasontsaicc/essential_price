@@ -1,21 +1,16 @@
 from tgi102_flask import sa, BASE, relationship
-from jieba.analyse.analyzer import ChineseAnalyzer
-import flask_whooshalchemyplus
 from tgi102_flask import app
 
 class Product(BASE):
     __tablename__ = 'product'
-    # flask_whooshalchemy
-    __searchable__ = ['product_name']
-    __analyzer__ = ChineseAnalyzer()
 
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     # mart_id = sa.Column(sa.String(64))
     # category_id = sa.Column(sa.Integer)
     product_name = sa.Column(sa.String(64))
-    product_url = sa.Column(sa.String(64))
-    product_pic_url = sa.Column(sa.String(64))
+    product_url = sa.Column(sa.String(128))
+    product_pic_url = sa.Column(sa.String(256))
 
     fk_price = relationship('Price')
 
