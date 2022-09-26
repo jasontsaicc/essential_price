@@ -74,7 +74,15 @@
                                     <ul>
                                         <li>種類 : <span>{{ query_data_list[0].category_id}}</span></li>
                                         <li>查詢日期 : <span>{{ query_data_list[1].date }}</span></li>
-                                        <li>店家 : <span> {{ mart_name }}</span></li>
+                                        {% if query_data_list[0].mart_id == "P" %}
+                                        <li>店家 : <span> 全聯 </span></li>
+                                        {% elif query_data_list[0].mart_id == "R" %}
+                                         <li>店家 : <span> 大潤發 </span></li>
+                                        {% elif query_data_list[0].mart_id == "C" %}
+                                         <li>店家 : <span> 家樂福 </span></li>
+                                        {% endif %}
+
+{#                                        <li>店家 : <span> {{ query_data_list[0].mart_id }}</span></li>#}
                                         <li>網址 : <span> {{ query_data_list[0].product_url }}</span></li>
                                     </ul>
                                 </div>
