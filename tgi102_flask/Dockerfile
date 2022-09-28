@@ -10,4 +10,4 @@ RUN pip install --upgrade pip && apt-get update -y && apt-get install python3-pi
 
 EXPOSE 8000
 
-ENTRYPOINT [ "./run_server.sh" ]
+#ENTRYPOINT [ "./run_server.sh" ]
