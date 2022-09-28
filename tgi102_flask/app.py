@@ -1,7 +1,7 @@
 import os
 import numpy as np
-# import cv2
-# import tensorflow as tf
+import cv2
+import tensorflow as tf
 
 from tgi102_flask import app, render_template, request, get_page_parameter, Pagination, redirect, url_for
 from tgi102_flask.model import get_index_data, get_count_category, get_category_product, get_shop_details
