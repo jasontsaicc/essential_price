@@ -41,9 +41,21 @@ def category(category_id):
 def shop_details(product_id_query):
     shop_details_data = get_shop_details(product_id_query)
 
+    query = shop_details_data[0].product_name
 
+    es = elasticsearch(index_name="essential", index_type='_doc')
+    data = es.search(query)
 
-    return render_template('shop-details.html', query_data_list=shop_details_data)
+    address_data = data['hits']['hits']
+    total = data['hits']['total']['value']
+    address_list = []
+    print("address_data", address_data)
+    # print("total", total)
+
+    for item in address_data:
+        address_list.append(item['_source'])
+
+    return render_template('shop-details.html', query_data_list=shop_details_data, return_list=address_list)
 
 
 @app.errorhandler(404)
@@ -144,7 +156,7 @@ def search_results(query, result_name=None):
     page = (int_page - 1) * 12
 
     es = elasticsearch(index_name="essential", index_type='_doc')
-    data = es.search(query, page)
+    data = es.search(query, page=page)
 
     address_data = data['hits']['hits']
     total = data['hits']['total']['value']
