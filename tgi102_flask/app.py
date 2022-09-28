@@ -136,8 +136,15 @@ def search():
 
 @app.route('/search_results/<query>')
 def search_results(query, result_name=None):
+    search = False
+    q = request.args.get('page', 1)
+    print("*" * 100)
+    print("q", q)
+    int_page = int(q)
+    page = (int_page - 1) * 12
+
     es = elasticsearch(index_name="essential", index_type='_doc')
-    data = es.search(query)
+    data = es.search(query, page)
 
     address_data = data['hits']['hits']
     total = data['hits']['total']['value']
@@ -146,20 +153,15 @@ def search_results(query, result_name=None):
     # print("total", total)
 
 
+
     for item in address_data:
         address_list.append(item['_source'])
 
-    search = False
-    q = request.args.get('page', 1)
-    int_page = int(q)
-    end = (int_page - 1) * 12
-    # if q:ls
-    #     search = True
-    page = request.args.get(get_page_parameter(), type=int, default=1)
 
+    page = request.args.get(get_page_parameter(), type=int, default=1)
     pagination = Pagination(page=page, per_page=12, total=total, search=search)
 
-    return render_template('search_results.html', query=query,page=page, pagination=pagination,
+    return render_template('search_results.html', query=query, page=page, pagination=pagination,
                            return_list=address_list, result_name=result_name)
 
 

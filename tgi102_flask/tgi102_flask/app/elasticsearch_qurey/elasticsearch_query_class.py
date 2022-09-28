@@ -7,9 +7,9 @@ class elasticsearch():
         self.index_name = index_name
         self.index_type = index_type
 
-    def search(self, query, count: int = 30):
+    def search(self, query, count: int = 30, page):
         body = {
-            "from": 0,
+            "from": page,
             "size": 12,
             "query": {
                 "multi_match": {
