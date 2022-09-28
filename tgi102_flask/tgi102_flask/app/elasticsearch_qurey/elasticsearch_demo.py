@@ -41,6 +41,9 @@ def create_es_data():
             "product_name": row[1],
             "product_url": row[2],
             "pic_url": row[3],
+            "category": row[4],
+            "mart_id": row[5],
+            "date": row[7],
             "price": row[8]
         }
         # print("message", body)

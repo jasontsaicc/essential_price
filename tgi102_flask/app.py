@@ -142,8 +142,8 @@ def search_results(query, result_name=None):
     address_data = data['hits']['hits']
     total = data['hits']['total']['value']
     address_list = []
-    print("data", data)
-    print("total", total)
+    print("address_data", address_data)
+    # print("total", total)
 
 
     for item in address_data:
@@ -157,9 +157,9 @@ def search_results(query, result_name=None):
     #     search = True
     page = request.args.get(get_page_parameter(), type=int, default=1)
 
-    # pagination = Pagination(page=page, per_page=12, total=count_category, search=pagination_search)
+    pagination = Pagination(page=page, per_page=12, total=total, search=search)
 
-    return render_template('search_results.html', query=query,
+    return render_template('search_results.html', query=query,page=page, pagination=pagination,
                            return_list=address_list, result_name=result_name)
 
 
