@@ -145,6 +145,7 @@ def search_results(query, result_name=None):
     print("data", data)
     print("total", total)
 
+
     for item in address_data:
         address_list.append(item['_source'])
 
@@ -154,11 +155,11 @@ def search_results(query, result_name=None):
     end = (int_page - 1) * 12
     # if q:ls
     #     search = True
-
     page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, per_page=12, total=total, search=search)
 
-    return render_template('search_results.html', page=page, pagination=pagination, query=query,
+    # pagination = Pagination(page=page, per_page=12, total=count_category, search=pagination_search)
+
+    return render_template('search_results.html', query=query,
                            return_list=address_list, result_name=result_name)
 
 
