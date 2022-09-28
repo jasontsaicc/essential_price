@@ -27,7 +27,7 @@ class elasticsearch():
 
     def shop_details_search(self, query, count: int = 30):
         body = {
-            "from": 0,
+            "from": 1,
             "size": 5,
             "query": {
                 "multi_match": {

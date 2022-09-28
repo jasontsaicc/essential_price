@@ -212,7 +212,7 @@
                                         <div class="sp-product-item">
                                             <div class="sp-product-thumb">
 {#                                                <span class="batch">New</span>#}
-                                                <a href="../../shop-details/{{ return_list[0]['id'] }}"><img src="{{ return_list[0]['pic_url'] }}" alt=""></a>
+                                                <a href="../../shop-details/{{ return_list[1]['id'] }}"><img src="{{ return_list[1]['pic_url'] }}" alt=""></a>
                                             </div>
                                             <div class="sp-product-content">
 {#                                                <div class="rating">#}
@@ -222,13 +222,13 @@
 {#                                                    <i class="fas fa-star"></i>#}
 {#                                                    <i class="fas fa-star"></i>#}
 {#                                                </div>#}
-                                                <h6 class="title"><a href="../../shop-details/{{ return_list[0]['id'] }}">{{ return_list[0]['product_name'] }}</a></h6>
+                                                <h6 class="title"><a href="../../shop-details/{{ return_list[1]['id'] }}">{{ return_list[1]['product_name'] }}</a></h6>
 {#                                                <span class="product-status">{{  return_list[0]['mart_id']}}</span>#}
-                                                {% if return_list[0]['mart_id'] == "P" %}
+                                                {% if return_list[1]['mart_id'] == "P" %}
                                                 <span class="product-status">全聯</span>
-                                            {% elif return_list[0]['mart_id'] == "R" %}
+                                            {% elif return_list[1]['mart_id'] == "R" %}
                                              <span class="product-status">大潤發</span>
-                                            {% elif return_list[0]['mart_id'] == "C" %}
+                                            {% elif return_list[1]['mart_id'] == "C" %}
                                             <span class="product-status">家樂福</span>
                                             {% endif %}
 
@@ -240,7 +240,7 @@
 {#                                                        </div>#}
                                                     </form>
                                                 </div>
-                                                <p>${{ return_list[0]['price'] }}</p>
+                                                <p>${{ return_list[1]['price'] }}</p>
                                             </div>
                                         </div>
                                     </div>
