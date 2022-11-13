@@ -7,7 +7,7 @@ import json
 import datetime
 
 # mongodb cloud connection
-client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://admin:00065638@serverlessinstance0.yltvt.mongodb.net')
 
 session = Session()
 
@@ -15,8 +15,8 @@ date = datetime.datetime.now()
 update_date = date.date()
 
 mongo_db = client.All_Market
-collections = mongo_db.PxMart
-result = collections.find({'date': "2022-08-24"}, {'_id': 0}).limit(500)
+collections = mongo_db.PxMart2
+result = collections.find({'date': "2022-11-13"}, {'_id': 0})
 
 # result = collections.find({'date': f'{update_date}'}, {'_id': 0}).limit(15)
 result_list = []

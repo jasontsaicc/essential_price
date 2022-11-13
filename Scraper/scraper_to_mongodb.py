@@ -4,7 +4,7 @@ import datetime
 
 
 
-client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://admin:00065638@serverlessinstance0.yltvt.mongodb.net')
 db = client.All_Market
 
 # test data
@@ -19,19 +19,19 @@ db = client.All_Market
 
 # data為爬蟲完成後return的JSON
 # 欄位修改觸需補pic_url修改內容
-def rtmart(data):
-    collections = db['RT-Mart']
-    collections.insert_many(data)
-    date = datetime.date.today()
-    collections.update_many({'date': f'{date}'}, {'$set':{'market': 'R'}}, upsert=False)
-
-
-def carr(data):
-    collections = db.Carrefour
-    collections.insert_many(data)
-    date = datetime.date.today()
-    collections.update_many({'date': f'{date}'}, {'$set':{'market': 'C'}}, upsert=False)
-    
+# def rtmart(data):
+#     collections = db['RT-Mart']
+#     collections.insert_many(data)
+#     date = datetime.date.today()
+#     collections.update_many({'date': f'{date}'}, {'$set':{'market': 'R'}}, upsert=False)
+#
+#
+# def carr(data):
+#     collections = db.Carrefour
+#     collections.insert_many(data)
+#     date = datetime.date.today()
+#     collections.update_many({'date': f'{date}'}, {'$set':{'market': 'C'}}, upsert=False)
+#
 
 def pxmart(data):
     collections = db.PxMart2
