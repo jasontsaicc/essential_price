@@ -20,8 +20,8 @@ class Product(BASE):
     # mart_id = sa.Column(sa.String(64))
     # category_id = sa.Column(sa.Integer)
     product_name = sa.Column(sa.String(64))
-    product_url = sa.Column(sa.String(64))
-    product_pic_url = sa.Column(sa.String(64))
+    product_url = sa.Column(sa.String(128))
+    product_pic_url = sa.Column(sa.String(255))
 
     fk_price = relationship('Price')
 
@@ -48,7 +48,7 @@ class Price(BASE):
 
 
 # 使用sa.create_engine設定數據庫的連接信息
-engine = sa.create_engine('mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com/essential', echo=True)
+engine = sa.create_engine('mysql+pymysql://root:00065638@34.80.145.135/essential', echo=True)
 # 定義session 可以去連接數據庫 用來插入數據, 查詢數據
 Session = sa.orm.sessionmaker(bind=engine)
 # 通過調用Base裡面的metadata.create_all()方法把engine傳入去建立數據庫

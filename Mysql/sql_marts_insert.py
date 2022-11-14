@@ -43,7 +43,8 @@ life_style = Category(id="life_style", category_name='生活休閒')
 daily_use = Category(id="daily_use", category_name='日用百貨')
 furniture = Category(id="furniture", category_name='家具寢飾')
 clothing = Category(id="clothing", category_name='服飾鞋包')
-electrical_3C = Category(id="electrical_3C", category_name='大小家電')
+electrical = Category(id="electrical", category_name='大小家電')
+e_3C = Category(id="3C", category_name='3C')
 
 
 # 建立一個session
