@@ -1,0 +1,64 @@
+version: '2.2'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+    container_name: elasticsearch-710
+    ports:
+      - "9200:9200"
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - http.host=0.0.0.0
+      - http.port=9200
+      - transport.host=127.0.0.1
+#      - 記憶體大小
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "http.cors.enabled=true"
+#      - "http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization"
+#      - "http.cors.allow-credentials=true"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    links:
+      - web
+#    volumes:
+#      - es_data:/usr/share/elasticsearch/data
+#    networks:
+#      - esnet
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:7.10.2
+    container_name: kibana-710
+    environment:
+      SERVER_NAME: kibana-server
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+#    networks:
+#      - esnet
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+    links:
+      - web
+
+  web:
+    build:
+      context: .
+#    restart: always
+    container_name: web_flask
+    ports:
+      - "8000:8000"
+#      - "9200:9200"
+#      - "5601:5601"
+    stdin_open: true
+    tty: true
+
+  nginx:
+    image: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - web

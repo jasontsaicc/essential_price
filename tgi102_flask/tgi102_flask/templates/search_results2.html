@@ -1,0 +1,540 @@
+{% extends "base.html" %}
+<!doctype html>
+
+{% block body %}
+
+            <!-- breadcrumb-area-end --><!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-7 col-lg-9">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">{{ query }}</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+{#                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>#}
+{#                                        <li class="breadcrumb-item active" aria-current="page">Blog Single</li>#}
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+    <!-- shop-area -->
+            <section class="shop--area pt-90 pb-90">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-3 order-2 order-lg-0">
+                            <aside class="shop-sidebar">
+                                <div class="widget shop-widget">
+                                    <div class="shop-widget-title">
+                                        <h6 class="title">產品類別</h6>
+                                    </div>
+                                    <div class="shop-cat-list">
+                                        <ul>
+                                            <li><a href="shop.html">配件 <span>+</span></a></li>
+                                            <li><a href="shop.html">Vegetables <span>+</span></a></li>
+                                            <li><a href="shop.html">Spices Food <span>+</span></a></li>
+                                            <li><a href="shop.html">Dairy <span>+</span></a></li>
+                                            <li><a href="shop.html">Baby Food <span>+</span></a></li>
+                                            <li><a href="shop.html">Kitchen Accessories <span>+</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="widget shop-widget">
+                                    <div class="shop-widget-title">
+                                        <h6 class="title">Filter By Price</h6>
+                                    </div>
+                                    <div class="price_filter">
+                                        <div id="slider-range"></div>
+                                        <div class="price_slider_amount">
+                                            <span>Price :</span>
+                                            <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget shop-widget">
+                                    <div class="shop-widget-title">
+                                        <h6 class="title">NEW PRODUCT</h6>
+                                    </div>
+                                    <div class="sidebar-product-list">
+                                        <ul>
+                                            <li>
+                                                <div class="sidebar-product-thumb">
+                                                    <a href="../shop-details"><img src="../static/img/product/sidebar_product01.png" alt=""></a>
+                                                </div>
+                                                <div class="sidebar-product-content">
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h5><a href="../shop-details">Uncle Bens Vanla</a></h5>
+                                                    <span>$39.00</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sidebar-product-thumb">
+                                                    <a href="../shop-details"><img src="../static/img/product/sidebar_product02.png" alt=""></a>
+                                                </div>
+                                                <div class="sidebar-product-content">
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h5><a href="../shop-details">Dannon Max</a></h5>
+                                                    <span>$29.00</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sidebar-product-thumb">
+                                                    <a href="../shop-details"><img src="../static/img/product/sidebar_product03.png" alt=""></a>
+                                                </div>
+                                                <div class="sidebar-product-content">
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h5><a href="../shop-details">Vanla Greek Pice</a></h5>
+                                                    <span>$35.00</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="widget shop-widget">
+                                    <div class="shop-widget-title">
+                                        <h6 class="title">BRANDS</h6>
+                                    </div>
+                                    <div class="shop-cat-list">
+                                        <ul>
+                                            <li><a href="shop.html">Adara <span>+</span></a></li>
+                                            <li><a href="shop.html">Carnation <span>+</span></a></li>
+                                            <li><a href="shop.html">We Beyond <span>+</span></a></li>
+                                            <li><a href="shop.html">Agrifram <span>+</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+{#                                <div class="widget">#}
+{#                                    <div class="shop-widget-banner text-center">#}
+{#                                        <a href="shop.html"><img src="../static/img/product/sidebar_shop_ad.png" alt=""></a>#}
+{#                                    </div>#}
+{#                                </div>#}
+                            </aside>
+                        </div>
+                        <div class="col-9">
+                            <div class="shop-discount-area">
+                                <div class="discount-content shop-discount-content">
+                                    <span>最多的商品資訊</span>
+                                    <h4 class="title"><a href="shop.html">最完整的比價</a></h4>
+                                    <p>讓你永遠買到最低價</p>
+                                    <a href="shop.html" class="btn rounded-btn">開始查詢吧</a>
+                                </div>
+                            </div>
+                            <div class="shop-top-meta mb-30">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-7">
+                                        <div class="shop-top-left">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-bars"></i> FILTER</a></li>
+                                                <li>{{ pagination.info }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-5">
+                                        <div class="shop-top-right">
+                                            <form action="#">
+                                                <select name="select">
+                                                    <option value="">Sort by newness</option>
+                                                    <option>Free Shipping</option>
+                                                    <option>Best Match</option>
+                                                    <option>Newest Item</option>
+                                                    <option>Size A - Z</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shop-products-wrap">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+{#                                            {%if return_list[0][2] in return_list %}#}
+
+                                                <a href="../../shop-details/{{ return_list[0]['id'] }}"><img src="{{ return_list[0]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <h6 class="title"><a href="../../shop-details/{{ return_list[0]['id'] }}">{{ return_list[0]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[0]['price'] }}</p>
+                                            </div>
+{#                                            {%endif%}#}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch discount">25%</span>#}
+                                                <a href="../shop-details/{{ return_list[1]['id'] }}"><img src="{{ return_list[1]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[1]['id'] }}">{{ return_list[1]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[1]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch discount">25%</span>#}
+                                                <a href="../shop-details/{{ return_list[2]['id'] }}"><img src="{{ return_list[2]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[2]['id'] }}">{{ return_list[2]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[2]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[3]['id'] }}"><img src="{{ return_list[3]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[3]['id'] }}">{{ return_list[3]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[3]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch discount">25%</span>#}
+                                                <a href="../shop-details/{{ return_list[4]['id'] }}"><img src="{{ return_list[4]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[4]['id'] }}">{{ return_list[4]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[4]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[5]['id'] }}"><img src="{{ return_list[5]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[5]['id'] }}">{{ return_list[5]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[5]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[6]['id'] }}"><img src="{{ return_list[6]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[6]['id'] }}">{{ return_list[6]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[6]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[7]['id'] }}"><img src="{{ return_list[7]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[7]['id'] }}">{{ return_list[7]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[7]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[8]['id'] }}"><img src="{{ return_list[8]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[8]['id'] }}">{{ return_list[8]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[8]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                               <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[9]['id'] }}"><img src="{{ return_list[9]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[9]['id'] }}">{{ return_list[9]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[9]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[10]['id'] }}"><img src="{{ return_list[10]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[10]['id'] }}">{{ return_list[10]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[10]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="sp-product-item">
+{#                                            <div class="sp-product-thumb">#}
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../shop-details/{{ return_list[11]['id'] }}"><img src="{{ return_list[11]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+                                                {#                                            <div class="sp-product-thumb">#}
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../shop-details/{{ return_list[11]['id'] }}">{{ return_list[11]['product_name'] }}</a></h6>
+                                                <span class="product-status">IN Stock</span>
+                                                <div class="sp-cart-wrap">
+                                                    <form action="#">
+                                                        <div class="cart-plus-minus">
+                                                            <input type="text" value="1">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[11]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+{#                            <div class="pagination-page-info">#}
+{#                            <div class="pagination-wrap">#}
+
+                                <ul>
+{#                                    {{ pagination.links }}#}
+
+{#                                    <li class="prev"><a href="shop.html">Prev</a></li>#}
+{#                                    <li><a href="shop.html">1</a></li>#}
+{#                                    <li class="active"><a href="shop.html"></a></li>#}
+{#                                    <li><a href="shop.html">3</a></li>#}
+{#                                    <li><a href="shop.html">4</a></li>#}
+{#                                    <li><a href="shop.html">...</a></li>#}
+{#                                    <li><a href="shop.html">10</a></li>#}
+{#                                    <li class="next"><a href="shop.html">Next</a></li>#}
+                                    {{ pagination.links }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+{% endblock %}
+
+
+</html>

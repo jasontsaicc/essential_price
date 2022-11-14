@@ -1,0 +1,613 @@
+
+
+{% extends "base.html" %}
+
+<!doctype html>
+    <body>
+    {% block body %}
+            <!-- shop-details-area -->
+            <section class="shop-details-area pt-90 pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="shop-details-flex-wrap">
+                                <div class="shop-details-nav-wrap">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="item-one-tab" data-toggle="tab" href="#item-one" role="tab" aria-controls="item-one" aria-selected="true"><img src="static/img/product/sd_nav_img01.png" alt=""></a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="item-two-tab" data-toggle="tab" href="#item-two" role="tab" aria-controls="item-two" aria-selected="false"><img src="static/img/product/sd_nav_img02.png" alt=""></a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="item-three-tab" data-toggle="tab" href="#item-three" role="tab" aria-controls="item-three" aria-selected="false"><img src="static/img/product/sd_nav_img03.png" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="shop-details-img-wrap">
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="item-one" role="tabpanel" aria-labelledby="item-one-tab">
+                                            <div class="shop-details-img">
+                                                <img src="{{ query_data_list[0].product_pic_url }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="item-two" role="tabpanel" aria-labelledby="item-two-tab">
+                                            <div class="shop-details-img">
+                                                <img src="static/img/product/shop_details_img02.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="item-three" role="tabpanel" aria-labelledby="item-three-tab">
+                                            <div class="shop-details-img">
+                                                <img src="static/img/product/shop_details_img03.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="shop-details-content">
+                                <h4 class="title">{{ query_data_list[0].product_name }}</h4>
+{#                                <div class="shop-details-meta">#}
+{#                                    <ul>#}
+{#                                        <li>Bands : <a href="shop.html">Ganic</a></li>#}
+{#                                        <li class="shop-details-review">#}
+{#                                            <div class="rating">#}
+{#                                                <i class="fas fa-star"></i>#}
+{#                                                <i class="fas fa-star"></i>#}
+{#                                                <i class="fas fa-star"></i>#}
+{#                                                <i class="fas fa-star"></i>#}
+{#                                                <i class="fas fa-star"></i>#}
+{#                                            </div>#}
+{#                                            <span>Review</span>#}
+{#                                        </li>#}
+{#                                        <li>ID : <span>{{ details_Product_id }}</span></li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+                                <div class="shop-details-price">
+                                    <h2 class="price">${{ query_data_list[1].price }}</h2>
+{#                                    <h5 class="stock-status">- IN Stock</h5>#}
+                                </div>
+{#                                <p>Organic food is food produced by methods complying with the standards of Rrganic farming. Standards vary Lorem ipsum#}
+{#                                dolor sit amet, consectetur adipiscing worldwide, but organic farming.</p>#}
+                                <div class="shop-details-list">
+                                    <ul>
+                                        <li>種類 : <span>{{ query_data_list[0].category_id}}</span></li>
+                                        <li>查詢日期 : <span>{{ query_data_list[1].date }}</span></li>
+                                        {% if query_data_list[0].mart_id == "P" %}
+                                        <li>店家 : <span> 全聯 </span></li>
+                                        {% elif query_data_list[0].mart_id == "R" %}
+                                         <li>店家 : <span> 大潤發 </span></li>
+                                        {% elif query_data_list[0].mart_id == "C" %}
+                                         <li>店家 : <span> 家樂福 </span></li>
+                                        {% endif %}
+
+{#                                        <li>店家 : <span> {{ query_data_list[0].mart_id }}</span></li>#}
+                                        <li>網址 : <span> {{ query_data_list[0].product_url }}</span></li>
+                                    </ul>
+                                </div>
+{#                                <div class="shop-perched-info">#}
+{#                                    <div class="sd-cart-wrap">#}
+{#                                        <form action="#">#}
+{#                                            <div class="cart-plus-minus">#}
+{#                                                <input type="text" value="1">#}
+{#                                            </div>#}
+{#                                        </form>#}
+{#                                    </div>#}
+{#                                    <a href="#" class="btn">add to cart</a>#}
+{#                                </div>#}
+{#                                <div class="shop-details-bottom">#}
+{#                                    <h5 class="title"><a href="#"><i class="far fa-heart"></i> Add To Wishlist</a></h5>#}
+{#                                    <ul>#}
+{#                                        <li>#}
+{#                                            <span>Tag : </span>#}
+{#                                            <a href="#">ICE Cream</a>#}
+{#                                        </li>#}
+{#                                        <li>#}
+{#                                            <span>CATEGORIES :</span>#}
+{#                                            <a href="#">women's,</a>#}
+{#                                            <a href="#">bikini,</a>#}
+{#                                            <a href="#">tops for,</a>#}
+{#                                            <a href="#">large bust</a>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-desc-wrap">
+                                <ul class="nav nav-tabs" id="myTabTwo" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab"
+                                            aria-controls="details" aria-selected="true">商品歷史價格</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="val-tab" data-toggle="tab" href="#val" role="tab" aria-controls="val"
+                                            aria-selected="false">其他賣場相關商品比價</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                                            aria-controls="review" aria-selected="false">附近賣場</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContentTwo">
+                                    <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">商品歷史價格</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-5">
+                                                    <div class="product-desc-img">
+                                                        <img src="static/img/product/desc_img.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-7">
+{#                                                    <h5 class="small-title">100% Natural Vitamin</h5>#}
+{#                                                    <iframe src="http://localhost:5601/app/visualize#/create?embed=true&type=area&indexPattern=bfe03540-3593-11ed-a995-9d318d9fbd91&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(filters:!(),linked:!f,query:(language:kuery,query:''),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count)),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(filter:!t,show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),grid:(categoryLines:!f),labels:(),legendPosition:right,seriesParams:!((data:(id:'1',label:Count),drawLinesBetweenPoints:!t,interpolate:linear,lineWidth:2,mode:stacked,show:!t,showCircles:!t,type:area,valueAxis:ValueAxis-1)),thresholdLine:(color:%23E7664C,show:!f,style:full,value:10,width:1),times:!(),type:area,valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:Count),type:value))),title:'',type:area))" height="600" width="800"></iframe>#}
+<div class='tableauPlaceholder' id='viz1664334362177' style='position: relative'><noscript><a href='#'><img alt='儀表板窗格 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;tg&#47;tgi102_test&#47;1_1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='tgi102_test&#47;1_1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;tg&#47;tgi102_test&#47;1_1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='zh-TW' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1664334362177');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='827px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+{#                                                    <ul class="product-desc-list">#}
+{#                                                        <li>65% poly, 35% rayon</li>#}
+{#                                                        <li>Hand wash cold</li>#}
+{#                                                        <li>Partially lined</li>#}
+{#                                                        <li>Hidden front button closure with keyhole accents</li>#}
+{#                                                        <li>Button cuff sleeves</li>#}
+{#                                                        <li>Lightweight semi-sheer fabrication</li>#}
+{#                                                        <li>Made in USA</li>#}
+{#                                                    </ul>#}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="val" role="tabpanel" aria-labelledby="val-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">其他賣場相關商品比價</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-5">
+                                                    <div class="product-desc-img">
+                                                        <img src="static/img/product/desc_img.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-7">
+
+{#                                                    <div class="col-xl-3 col-md-4 col-sm-6">#}
+                                        <div class="sp-product-item">
+                                            <div class="sp-product-thumb">
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../../shop-details/{{ return_list[1]['id'] }}"><img src="{{ return_list[1]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../../shop-details/{{ return_list[1]['id'] }}">{{ return_list[1]['product_name'] }}</a></h6>
+{#                                                <span class="product-status">{{  return_list[0]['mart_id']}}</span>#}
+                                                {% if return_list[1]['mart_id'] == "P" %}
+                                                <span class="product-status">全聯</span>
+                                            {% elif return_list[1]['mart_id'] == "R" %}
+                                             <span class="product-status">大潤發</span>
+                                            {% elif return_list[1]['mart_id'] == "C" %}
+                                            <span class="product-status">家樂福</span>
+                                            {% endif %}
+
+
+                                                <div class="sp-cart-wrap">
+{#                                                    <form action="#">#}
+{#                                                        <div class="cart-plus-minus">#}
+{#                                                            <input type="text" value="1">#}
+{#                                                        </div>#}
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[1]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+{#                                                <div class="col-xl-3 col-md-4 col-sm-6">#}
+                                        <div class="sp-product-item">
+                                            <div class="sp-product-thumb">
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../../shop-details/{{ return_list[2]['id'] }}"><img src="{{ return_list[2]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../../shop-details/{{ return_list[2]['id'] }}">{{ return_list[2]['product_name'] }}</a></h6>
+{#                                                <span class="product-status">{{  return_list[0]['mart_id']}}</span>#}
+                                                {% if return_list[2]['mart_id'] == "P" %}
+                                                <span class="product-status">全聯</span>
+                                            {% elif return_list[2]['mart_id'] == "R" %}
+                                             <span class="product-status">大潤發</span>
+                                            {% elif return_list[2]['mart_id'] == "C" %}
+                                            <span class="product-status">家樂福</span>
+                                            {% endif %}
+
+
+                                                <div class="sp-cart-wrap">
+{#                                                    <form action="#">#}
+{#                                                        <div class="cart-plus-minus">#}
+{#                                                            <input type="text" value="1">#}
+{#                                                        </div>#}
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[2]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+{#                                                   <div class="col-xl-3 col-md-4 col-sm-6">#}
+                                        <div class="sp-product-item">
+                                            <div class="sp-product-thumb">
+{#                                                <span class="batch">New</span>#}
+                                                <a href="../../shop-details/{{ return_list[3]['id'] }}"><img src="{{ return_list[3]['pic_url'] }}" alt=""></a>
+                                            </div>
+                                            <div class="sp-product-content">
+{#                                                <div class="rating">#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                    <i class="fas fa-star"></i>#}
+{#                                                </div>#}
+                                                <h6 class="title"><a href="../../shop-details/{{ return_list[3]['id'] }}">{{ return_list[3]['product_name'] }}</a></h6>
+{#                                                <span class="product-status">{{  return_list[0]['mart_id']}}</span>#}
+                                                {% if return_list[3]['mart_id'] == "P" %}
+                                                <span class="product-status">全聯</span>
+                                            {% elif return_list[3]['mart_id'] == "R" %}
+                                             <span class="product-status">大潤發</span>
+                                            {% elif return_list[3]['mart_id'] == "C" %}
+                                            <span class="product-status">家樂福</span>
+                                            {% endif %}
+
+
+                                                <div class="sp-cart-wrap">
+{#                                                    <form action="#">#}
+{#                                                        <div class="cart-plus-minus">#}
+{#                                                            <input type="text" value="1">#}
+{#                                                        </div>#}
+                                                    </form>
+                                                </div>
+                                                <p>${{ return_list[3]['price'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">附近賣場</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-5">
+                                                    <div class="product-desc-img">
+                                                        <img src="static/img/product/desc_img.png" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-7">
+{#Google 內置方案#}
+<iframe src="https://storage.googleapis.com/maps-solutions-rm4a85x724/neighborhood-discovery/xd2t/neighborhood-discovery.html"
+  width="100%" height="600px"
+  style="border:0;"
+  loading="lazy">
+</iframe>
+
+{#                                                    方案二#}
+{#                            <style>#}
+{#                            #map {#}
+{#                            height: 400px;#}
+{#                            }#}
+{#                            html, body {#}
+{#                            height: 400px;#}
+{#                            margin: 0;#}
+{#                            padding: 0;#}
+{#                            }#}
+{#                            </style>#}
+{#<div id="map"></div>#}
+{#<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtYyfJ_Y4f4_BxeLP0kXiCUuNfY4hAdBg&callback=initMap"></script>#}
+{#<div id="map"></div>#}
+{#    <script>#}
+{#      let map;#}
+{##}
+{#	// 設置定位按鈕#}
+{#	function mapCenterControl(map, clickButton) {#}
+{#		let centerControlDiv = document.createElement('div');#}
+{##}
+{#        // Set CSS for the control border.#}
+{#        let controlUI = document.createElement('button');#}
+{#		controlUI.style.backgroundColor = '#fff';#}
+{#		controlUI.style.border = 'none';#}
+{#		controlUI.style.outline = 'none';#}
+{#		controlUI.style.width = '40px';#}
+{#		controlUI.style.height = '40px';#}
+{#		controlUI.style.borderRadius = '2px';#}
+{#		controlUI.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';#}
+{#		controlUI.style.cursor = 'pointer';#}
+{#		controlUI.style.marginRight = '10px';#}
+{#		controlUI.style.padding = '0';#}
+{#		controlUI.title = 'Your Location';#}
+{#        centerControlDiv.appendChild(controlUI);#}
+{##}
+{#        // Set CSS for the control interior.#}
+{#        let controlText = document.createElement('div');#}
+{#		controlText.style.margin = '10px';#}
+{#		controlText.style.width = '30px';#}
+{#		controlText.style.height = '30px';#}
+{#		controlText.style.backgroundImage = 'url(https://www.kindpng.com/picc/m/9-97627_location-map-pin-pinpoint-point-pointer-location-clip.png)';#}
+{#		controlText.style.backgroundSize = '20px 20px';#}
+{#		controlText.style.backgroundPosition = '0px 0px';#}
+{#		controlText.style.backgroundRepeat = 'no-repeat';#}
+{#        controlUI.appendChild(controlText);#}
+{##}
+{#        // constructor passing in this DIV.#}
+{#		centerControlDiv.index = 1; // 排列優先度#}
+{#        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(centerControlDiv); // 設定按鈕加入地圖的位置#}
+{##}
+{#        // Setup the click event listeners.#}
+{#        controlUI.addEventListener('click', () => clickButton());#}
+{#    }#}
+{##}
+{##}
+{#	// 取得使用者位置#}
+{#	function gettingPosition(){#}
+{#		if(navigator.geolocation){#}
+{#			return new Promise((resolve, reject) => {#}
+{#				let option = {#}
+{#					enableAcuracy:false, // 提高精確度#}
+{#					maximumAge:0, // 設定上一次位置資訊的有效期限(毫秒)#}
+{#					timeout:10000 // 逾時計時器(毫秒)#}
+{#				};#}
+{#				navigator.geolocation.getCurrentPosition(resolve, reject, option);#}
+{#			})#}
+{#		}else{#}
+{#			alert("Does not support positioning!");#}
+{#		}#}
+{#	}#}
+{#	function successCallback(position){#}
+{#		map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});#}
+{#	}#}
+{#	function errorCallback(error) {#}
+{#		alert(error.message); //error.code#}
+{#	}#}
+{##}
+{##}
+{#    function initMap() {#}
+{#        map = new google.maps.Map(document.getElementById('map'), {#}
+{#			zoom: 16,#}
+{#			center: {lat: 25.0467761, lng: 121.5122962}#}
+{#        });#}
+{#		mapCenterControl(map,#}
+{#			() => gettingPosition()#}
+{#			.then(position => successCallback(position))#}
+{#			.catch(error => errorCallback(error))#}
+{#		)#}
+{##}
+{#  };#}
+{##}
+{##}
+{#      }#}
+{#    </script>#}
+{#<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtYyfJ_Y4f4_BxeLP0kXiCUuNfY4hAdBg&callback=initMap"></script>#}
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- shop-details-area-end -->
+
+{#            <!-- coupon-area -->#}
+{#            <div class="coupon-area">#}
+{#                <div class="container">#}
+{#                    <div class="row">#}
+{#                        <div class="col-12">#}
+{#                            <div class="coupon-bg">#}
+{#                                <div class="coupon-title">#}
+{#                                    <span>Use coupon Code</span>#}
+{#                                    <h3 class="title">Get $3 Discount Code</h3>#}
+{#                                </div>#}
+{#                                <div class="coupon-code-wrap">#}
+{#                                    <h5 class="code">ganic21abs</h5>#}
+{#                                    <img src="static/img/images/coupon_code.png" alt="">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- coupon-area-end -->#}
+
+{#            <!-- best-sellers-area -->#}
+{#            <section class="best-sellers-area pt-85 pb-70">#}
+{#                <div class="container">#}
+{#                    <div class="row align-items-end mb-40">#}
+{#                        <div class="col-md-8 col-sm-9">#}
+{#                            <div class="section-title">#}
+{#                                <span class="sub-title">Related Products</span>#}
+{#                                <h2 class="title">From this Collection</h2>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-md-4 col-sm-3">#}
+{#                            <div class="section-btn text-left text-md-right">#}
+{#                                <a href="shop.html" class="btn">View All</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="best-sellers-products">#}
+{#                        <div class="row justify-content-center">#}
+{#                            <div class="col-3">#}
+{#                                <div class="sp-product-item mb-20">#}
+{#                                    <div class="sp-product-thumb">#}
+{#                                        <span class="batch">New</span>#}
+{#                                        <a href="shop-details.html"><img src="static/img/product/sp_products09.png" alt=""></a>#}
+{#                                    </div>#}
+{#                                    <div class="sp-product-content">#}
+{#                                        <div class="rating">#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                        </div>#}
+{#                                        <h6 class="title"><a href="shop-details.html">Uncle Orange Vanla Ready Pice</a></h6>#}
+{#                                        <span class="product-status">IN Stock</span>#}
+{#                                        <div class="sp-cart-wrap">#}
+{#                                            <form action="#">#}
+{#                                                <div class="cart-plus-minus">#}
+{#                                                    <input type="text" value="1">#}
+{#                                                </div>#}
+{#                                            </form>#}
+{#                                        </div>#}
+{#                                        <p>$1.50 - 1 kg</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-3">#}
+{#                                <div class="sp-product-item mb-20">#}
+{#                                    <div class="sp-product-thumb">#}
+{#                                        <span class="batch discount">15%</span>#}
+{#                                        <a href="shop-details.html"><img src="static/img/product/sp_products02.png" alt=""></a>#}
+{#                                    </div>#}
+{#                                    <div class="sp-product-content">#}
+{#                                        <div class="rating">#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                        </div>#}
+{#                                        <h6 class="title"><a href="shop-details.html">Dannon Max Vanla ice cream</a></h6>#}
+{#                                        <span class="product-status">IN Stock</span>#}
+{#                                        <div class="sp-cart-wrap">#}
+{#                                            <form action="#">#}
+{#                                                <div class="cart-plus-minus">#}
+{#                                                    <input type="text" value="1">#}
+{#                                                </div>#}
+{#                                            </form>#}
+{#                                        </div>#}
+{#                                        <p>$3.50 - 1 lt</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-3">#}
+{#                                <div class="sp-product-item mb-20">#}
+{#                                    <div class="sp-product-thumb">#}
+{#                                        <span class="batch discount">25%</span>#}
+{#                                        <a href="shop-details.html"><img src="static/img/product/sp_products03.png" alt=""></a>#}
+{#                                    </div>#}
+{#                                    <div class="sp-product-content">#}
+{#                                        <div class="rating">#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                        </div>#}
+{#                                        <h6 class="title"><a href="shop-details.html">Walnuts Max Vanla Greek Pice</a></h6>#}
+{#                                        <span class="product-status">IN Stock</span>#}
+{#                                        <div class="sp-cart-wrap">#}
+{#                                            <form action="#">#}
+{#                                                <div class="cart-plus-minus">#}
+{#                                                    <input type="text" value="1">#}
+{#                                                </div>#}
+{#                                            </form>#}
+{#                                        </div>#}
+{#                                        <p>$2.99 - 1 kg</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-3">#}
+{#                                <div class="sp-product-item mb-20">#}
+{#                                    <div class="sp-product-thumb">#}
+{#                                        <span class="batch">new</span>#}
+{#                                        <a href="shop-details.html"><img src="static/img/product/sp_products04.png" alt=""></a>#}
+{#                                    </div>#}
+{#                                    <div class="sp-product-content">#}
+{#                                        <div class="rating">#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                        </div>#}
+{#                                        <h6 class="title"><a href="shop-details.html">Brachs Bens Vanla Ready Pice</a></h6>#}
+{#                                        <span class="product-status">IN Stock</span>#}
+{#                                        <div class="sp-cart-wrap">#}
+{#                                            <form action="#">#}
+{#                                                <div class="cart-plus-minus">#}
+{#                                                    <input type="text" value="1">#}
+{#                                                </div>#}
+{#                                            </form>#}
+{#                                        </div>#}
+{#                                        <p>$2.99 - 1 kg</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-3">#}
+{#                                <div class="sp-product-item mb-20">#}
+{#                                    <div class="sp-product-thumb">#}
+{#                                        <span class="batch discount">25%</span>#}
+{#                                        <a href="shop-details.html"><img src="static/img/product/sp_products05.png" alt=""></a>#}
+{#                                    </div>#}
+{#                                    <div class="sp-product-content">#}
+{#                                        <div class="rating">#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                            <i class="fas fa-star"></i>#}
+{#                                        </div>#}
+{#                                        <h6 class="title"><a href="shop-details.html">Black Lady Vanla Greek Grapes</a></h6>#}
+{#                                        <span class="product-status">IN Stock</span>#}
+{#                                        <div class="sp-cart-wrap">#}
+{#                                            <form action="#">#}
+{#                                                <div class="cart-plus-minus">#}
+{#                                                    <input type="text" value="1">#}
+{#                                                </div>#}
+{#                                            </form>#}
+{#                                        </div>#}
+{#                                        <p>$5.99 - 1 kg</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </section>#}
+{#            <!-- best-sellers-area-end -->#}
+
+        <!-- main-area-end -->
+        {% endblock %}
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtYyfJ_Y4f4_BxeLP0kXiCUuNfY4hAdBgAIzaSyDtYyfJ_Y4f4_BxeLP0kXiCUuNfY4hAdBg">
+</script>
+
+
+
+
+
+
+
+

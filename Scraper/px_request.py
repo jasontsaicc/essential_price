@@ -68,11 +68,8 @@ class Pxmart:
 
         except Exception as e:
             print(e)
-
-        finally:
-            # print('本頁獲取的JSON：{}'.format(json.dumps(result, ensure_ascii=False, default=str)))
-            self.save_mongodb(result)
-            # return json.dumps(res, ensure_ascii=False)
+        
+        return result
 
     def get_category(self):
         self.url = "https://shop.pxmart.com.tw/v2/official/SalePageCategory/0?sortMode=Newest"
@@ -87,33 +84,3 @@ class Pxmart:
                 'href')
             all_category_num = all_category_url.replace("https://shop.pxmart.com.tw/v2/official/SalePageCategory/", "")
             print(all_category_name.text, all_category_num)
-
-    @staticmethod
-    def save_mongodb(data):
-        # 將爬取的資料存入mongodb
-        client = pymongo.MongoClient(
-            host='mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority', port=27017)
-        db = client["All_Market"]
-        collection = db.PxMart
-        collection.insert_many(data)
-
-
-if __name__ == '__main__':
-    # 計算程式執行時間
-    start = datetime.datetime.now()
-    pxmart = Pxmart()
-
-    # 所有分類以及url
-    #     dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks":[244, 248, 250], "rice_oil_powder":[729, 246, 247, 249], "make_up":[252, 528], "baby":[441], "life_style":[254, 222, 358], "daily_use":[251, 253, 511], "furniture":[518], "clothing":[462, 522, ], "electrical":[497, 502, 506]}
-    dict_px_category = {"fresh_food":[240, 241, 374, 242, 255, 243], "frozen_food":[245], "drink_snacks": [244, 248, 250], "rice_oil_powder": [729, 246, 247, 249],
-                        "make_up": [252, 528], "baby": [441], "life_style": [254, 222, 358],
-                        "daily_use": [251, 253, 511], "furniture": [518], "clothing": [462, 522],
-                        "electrical": [497, 502, 506]}
-
-    # 用dict的items()方法取出key和value  代入get_content()方法
-    for category_key, category_values in dict_px_category.items():
-        for category_value in category_values:
-            print(category_key, category_value)
-            pxmart.get_content(category_key, category_value)
-    end = datetime.datetime.now()
-    print("執行時間：", end - start)

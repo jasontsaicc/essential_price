@@ -3,12 +3,9 @@ from pymongo import MongoClient
 import datetime
 
 
-# client = MongoClient(host="localhost", port=27017)
-# db = client.config
-# collection = db['test']
-# print(collection)
-# client = MongoClient('mongodb+srv://admin:tgi102aaa@cluster0.19rsmeq.mongodb.net/?retryWrites=true&w=majority')
-# db = client.All_Market
+
+client = MongoClient('mongodb+srv://admin:00065638@serverlessinstance0.yltvt.mongodb.net')
+db = client.All_Market
 
 # test data
 # product = [{'Category': 'rice_oil_powder', 'Date': '2022-08-24', 'Market': 'pxgo',  'Price': '89', 
@@ -22,29 +19,19 @@ import datetime
 
 # data為爬蟲完成後return的JSON
 # 欄位修改觸需補pic_url修改內容
-def rtmart(data):
-    collections = db['RT-Mart']
-    collections.insert_many(data)
-    date = datetime.date.today()
-    collections.update_many({'date': f'{date}'}, {'$set':{'market': 'R'}}, upsert=False)
-
-
-def carr(data):
-    collections = db.Carrefour
-    collections.insert_many(data)
-    date = datetime.date.today()
-    collections.update_many({'Date': f'{date}'}, {'$set':{'Market': 'C'}}, upsert=False)
-    collections.update_many(
-        {'Date': f'{date}'}, 
-        {'$rename':{
-            'Category': 'category', 
-            'Date': 'date', 
-            'Market': 'market', 
-            'Price': 'price', 
-            'Product_name': 'product_name', 
-            'Url': 'url'}}, 
-        upsert=False)
-
+# def rtmart(data):
+#     collections = db['RT-Mart']
+#     collections.insert_many(data)
+#     date = datetime.date.today()
+#     collections.update_many({'date': f'{date}'}, {'$set':{'market': 'R'}}, upsert=False)
+#
+#
+# def carr(data):
+#     collections = db.Carrefour
+#     collections.insert_many(data)
+#     date = datetime.date.today()
+#     collections.update_many({'date': f'{date}'}, {'$set':{'market': 'C'}}, upsert=False)
+#
 
 def pxmart(data):
     collections = db.PxMart
