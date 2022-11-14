@@ -14,7 +14,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config[
-        'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:tgi102aaa@projectdb.ckq7h3eivlb4.ap-northeast-1.rds.amazonaws.com:3306/essential"
+        'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:00065638@34.80.145.135/essential"
     app.config['UPLOAD_FOLDER'] = "tgi102_flask/static/upload/"
     app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
